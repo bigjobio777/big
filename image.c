@@ -83,7 +83,7 @@ void	stolbec(t_list *list, int stolbec, double dist, int color)
 	{
 		visota = (list->focus / list->sprites[i]) * list->r_y;
 		j = (list->r_y - visota) / 2;
-		while(j < (list->r_y + visota) / 2)
+		while(j < (list->r_y + visota) / 2 && j < list->r_y && j >= 0)
 		{	
 			my_mlx_pixel_put(list, stolbec, j, 0x051204);
 			j++;
