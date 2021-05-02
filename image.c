@@ -60,7 +60,8 @@ void	stolbec(t_list *list, int stolbec, double dist, int color)
 	konec = 0;
 	tempo_dist = dist;
 	visota = (list->focus / dist) * list->r_y;
-	//printf("%f\n", list->sprites[0]);
+	list->sprites = (list->sprites);
+	sort(list->sprites);
 	while (i <= (list->r_y - visota) / 2 && i < list->r_y)
 	{
 		my_mlx_pixel_put(list, stolbec, i, 0x115120);
@@ -79,13 +80,18 @@ void	stolbec(t_list *list, int stolbec, double dist, int color)
 	}
 	i = 0;
 	int j;
+	
 	while (list->sprites[i] != -1)
 	{
-		visota = (list->focus / list->sprites[i]) * list->r_y;
+		visota = (list->focus / (list->sprites[i] - 0.5)) * list->r_y;
 		j = (list->r_y - visota) / 2;
-		while(j < (list->r_y + visota) / 2)
+		// printf("SPRITE[i] == %f  i == %d\n", list->sprites[i], i);
+		while(j < (list->r_y + visota) / 2 && j < list->r_y)
 		{	
-			my_mlx_pixel_put(list, stolbec, j, 0x051204);
+			if (j >= 0)
+			{
+				my_mlx_pixel_put(list, stolbec, j, i % 2 ? 0xAA66BB : 0);
+			}
 			j++;
 		}
 		i++;

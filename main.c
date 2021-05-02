@@ -45,7 +45,7 @@ int drawimage(t_list *list)
 		x += (step_player * cos(list->pos_angle - (M_PI / 2)));
 		y += (step_player * sin(list->pos_angle - (M_PI / 2)));
 	}
-	if ((y < list->max_y && y >= 0) && (x >= 0 && x < list->max_x) && list->karta[(int)y][((int)(x))] != '1')
+	if ((y < list->max_y && y >= 0) && (x >= 0 && x < list->max_x) && list->karta[(int)y][(int)x] != '1' && list->karta[(int)y][(int)x] != '2')
 	{
 		list->pos_x = x;
 		list->pos_y = y;
@@ -53,6 +53,7 @@ int drawimage(t_list *list)
 	cast_rays(list);
 	mlx_do_sync(list->mlx.mlx);
 	mlx_put_image_to_window(list->mlx.mlx, list->mlx.mlx_win, list->data.img, 0, 0);
+	mlx_do_sync(list->mlx.mlx);
 	return (0);
 }
 

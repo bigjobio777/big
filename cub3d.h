@@ -126,4 +126,5 @@ double		*sprites_1(t_list *list, int x, int y);
 double		*sprites_2(t_list *list, int x, int y);
 double		*sprites_3(t_list *list, int x, int y);
 double		*sprites_4(t_list *list, int x, int y);
+void		sort(double *big);
 #endif
