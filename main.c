@@ -62,11 +62,55 @@ void	mlx_starter(t_list *list)
 	list->mlx.mlx = mlx_init();
 	list->mlx.mlx_win = mlx_new_window(list->mlx.mlx, list->r_x, list->r_y, "Hello world!");
 	list->data.img = mlx_new_image(list->mlx.mlx, list->r_x, list->r_y);
-	list->data.addr = mlx_get_data_addr(list->data.img, &list->data.bits_per_pixel, &list->data.line_length, &list->data.endian);
+	list->data.addr = (int*)mlx_get_data_addr(list->data.img, &list->data.bits_per_pixel, &list->data.line_length, &list->data.endian);
 	mlx_hook(list->mlx.mlx_win, 02, (1L<<0), key_hook, list);
 	mlx_hook(list->mlx.mlx_win, 17, (1L<<17), key_hook_exit, list);
 	mlx_hook(list->mlx.mlx_win, 03, (1L<<1), key_hook_stop, list);
 	mlx_loop_hook(list->mlx.mlx, drawimage, list);
+}
+
+int save_bmp(t_list *list)
+{
+	int		fd;
+	fd = open("scrnsht.bmp", O_CREAT | O_WRONLY | O_TRUNC, 444);
+	int a = 0;
+	write(fd, &(unsigned short){0x4d42}, 2);
+	write(fd, &(unsigned int){54 + list->r_x * list->r_y * 4}, 4);
+	write(fd, &(unsigned short){0}, 2);
+	write(fd, &(unsigned short){0}, 2);
+	write(fd, &(unsigned int){54}, 4);
+	write(fd, &(unsigned int){40}, 4);
+	write(fd, &list->r_x, 4);
+	write(fd, &list->r_y, 4);
+	write(fd, &(unsigned short){1}, 2);
+	write(fd, &(unsigned short){32}, 2);
+	write(fd, &(unsigned int){0}, 4);
+	write(fd, &(unsigned int){0}, 4);
+	write(fd, &(unsigned int){0}, 4);
+	write(fd, &(unsigned int){0}, 4);
+	write(fd, &(unsigned int){0}, 4);
+	write(fd, &(unsigned int){0}, 4);
+	write(fd, &(unsigned int){0}, 4);
+	list->mlx.mlx = mlx_init();
+	list->data.img = mlx_new_image(list->mlx.mlx, list->r_x, list->r_y);
+	list->data.addr = (int*)mlx_get_data_addr(list->data.img, &list->data.bits_per_pixel, &list->data.line_length, &list->data.endian);
+	cast_rays(list);
+	int i;
+	int j;
+	i = 0;
+	while (i < list->r_y)
+	{
+		j = 0;
+		while (j < list->r_x)
+		{
+			write(fd, &list->data.addr[i*list->r_x + j], 4);
+			j++;
+		}
+		i++;
+	}
+	close(fd);
+	mlx_destroy_image(list->mlx.mlx, list->data.img);
+	return (0);
 }
 
 int	 main(int argc, char **argv)
@@ -75,6 +119,11 @@ int	 main(int argc, char **argv)
 	
 	init_flags(&list);
 	gnl(argc, argv, &list);
+	if (argc == 3)
+	{
+		save_bmp(&list);
+		exit(0);
+	}
 	mlx_starter(&list);
 	mlx_loop(list.mlx.mlx);
 	return (0);

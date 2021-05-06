@@ -30,7 +30,7 @@ void		init_flags(t_list *big)
 	big->FOV = (M_PI / 3);
 	big->max_x = 0;
 	big->max_y = 0;
-	big->focus = 0.25;
+	big->focus = 1;
 	big->sprites = (double *)malloc(sizeof(double) * (1));
 	big->sprites[0] = -1;
 	while (i < 127)

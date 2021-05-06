@@ -16,7 +16,7 @@ void		sort(double *big)
 	{
 		while (big[j] != -1)
 		{
-			if (big[j] > big[i])
+			if (big[j] < big[i])
 			{
 				tempo = big[i];
 				big[i] = big[j];

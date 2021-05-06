@@ -83,14 +83,14 @@ void	stolbec(t_list *list, int stolbec, double dist, int color)
 	
 	while (list->sprites[i] != -1)
 	{
-		visota = (list->focus / (list->sprites[i] - 0.5)) * list->r_y;
+		visota = ((list->focus / (list->sprites[i] - 0.5)) * list->r_y);
 		j = (list->r_y - visota) / 2;
 		// printf("SPRITE[i] == %f  i == %d\n", list->sprites[i], i);
 		while(j < (list->r_y + visota) / 2 && j < list->r_y)
 		{	
-			if (j >= 0)
+			if (j >= 0 && (i + j) % 3 == 0)
 			{
-				my_mlx_pixel_put(list, stolbec, j, i % 2 ? 0xAA66BB : 0);
+				my_mlx_pixel_put(list, stolbec, j, (i % 2 == 0) ? 0xAA66BB : 0);
 			}
 			j++;
 		}
@@ -102,6 +102,6 @@ void			my_mlx_pixel_put(t_list *list, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = list->data.addr + (y * list->data.line_length + x * (list->data.bits_per_pixel / 8));
+	dst = (char*)list->data.addr + (y * list->data.line_length + x * (list->data.bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }

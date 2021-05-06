@@ -3,7 +3,7 @@ SRC := main.c errors.c init_flags.c gnl.c all_for_parse/parse_for_map.c all_for_
 OBJS := $(SRC:.c=.o)
 CC := gcc
 D := $(SRC:.c=.d)
-CFLAGS ?= -MMD -Imlx -ILibft -g -fsanitize=address#-Wall -Wextra -Werror
+CFLAGS ?= -MMD -Imlx -ILibft -g #-fsanitize=address#-Wall -Wextra -Werror
 
 all: Makelib cub3D
 
