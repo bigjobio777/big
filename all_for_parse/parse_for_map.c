@@ -3,8 +3,8 @@
 
 void	check_all(t_list *list)
 {
-	if (list->r_x == 0 || list->path_to_south == NULL || list->path_to_north == NULL ||
-	list->path_to_west == NULL || list->path_to_east == NULL || list->path_to_sprite == NULL ||
+	if (list->r_x == 0 || list->tsouth.file == NULL || list->tnorth.file == NULL ||
+	list->twest.file == NULL || list->teast.file == NULL || list->tsprite.file == NULL ||
 	list->floor_red == (-1) || list->ceiling_red == (-1) || list->karta == NULL || list->playes_location == 0)
 		print_error(-47);
 }
@@ -40,15 +40,15 @@ void	parse_r(t_list *list, char **big)
 
 void	parse_NO_SO(t_list *list, char **big)
 {
-	if (ft_strcmp(big[0], "NO"))
+	if (!ft_strcmp(big[0], "NO"))
 	{
 	if (big[2] != NULL)
 		print_error(-20);
 	if (big[1] == NULL)
 		print_error(-34);
-	if (list->path_to_north != NULL)
+	if (list->tnorth.file != NULL)
 		print_error(-15);
-	list->path_to_north = ft_strdup(big[1]);
+	list->tnorth.file = ft_strdup(big[1]);
 	}
 	else 
 	{
@@ -56,23 +56,23 @@ void	parse_NO_SO(t_list *list, char **big)
 			print_error(-19);
 		if (big[1] == NULL)
 			print_error(-35);
-		if (list->path_to_south != NULL)
+		if (list->tsouth.file != NULL)
 			print_error(-16);
-		list->path_to_south = ft_strdup(big[1]);
+		list->tsouth.file = ft_strdup(big[1]);
 	}
 }
 
 void	parse_WE_EA(t_list *list, char **big)
 {
-	if (ft_strcmp(big[0], "WE"))
+	if (!ft_strcmp(big[0], "WE"))
 	{
 	if (big[2] != NULL)
 		print_error(-18);
 	if (big[1] == NULL)
 			print_error(-36);
-	if (list->path_to_west != NULL)
+	if (list->twest.file != NULL)
 		print_error(-17);
-	list->path_to_west = ft_strdup(big[1]);
+	list->twest.file = ft_strdup(big[1]);
 	}
 	else
 	{
@@ -80,9 +80,9 @@ void	parse_WE_EA(t_list *list, char **big)
 		print_error(-21);
 	if (big[1] == NULL)
 			print_error(-37);
-	if (list->path_to_east != NULL)
+	if (list->teast.file != NULL)
 		print_error(-22);
-	list->path_to_east = ft_strdup(big[1]);
+	list->teast.file = ft_strdup(big[1]);
 	}
 }
 
@@ -92,7 +92,7 @@ void	parse_S(t_list *list, char **big)
 		print_error(-23);
 	if (big[1] == NULL)
 			print_error(-38);
-	if (list->path_to_sprite != NULL)
+	if (list->tsprite.file != NULL)
 		print_error(-24);
-	list->path_to_sprite = ft_strdup(big[1]);
+	list->tsprite.file = ft_strdup(big[1]);
 }

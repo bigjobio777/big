@@ -1,66 +1,6 @@
 #include "../Libft/libft.h"
 #include "../cub3d.h"
 
-void		check_karta4(t_list *list)
-{
-	int	 i;
-	int	 j;
-	int	 length_x;
-	int	 length_y;
-
-	i = 0;
-	j = 0;
-	length_y = 0;
-	length_x = 0;
-	length_x = (ft_strlen(list->karta[0]) - 1);
-	while (list->karta[length_y])
-		length_y++;
-	i = length_y - 1;
-	length_y--;
-	while (length_x >= 0)
-	{
-		while (length_y >= 0)
-		{
-			if (list->karta[length_y][length_x] == '1')
-				length_y = (-1);
-			else if (list->karta[length_y][length_x] != ' ' && list->karta[length_y][length_x])
-				print_error(-52);
-			length_y--;
-		}
-		length_y = i;
-		length_x--;
-	}
-}
-
-void		check_karta3(t_list *list)
-{
-	int	 i;
-	int	 j;
-	int	 length_x;
-	int	 length_y;
-
-	i = 0;
-	j = 0;
-	length_y = 0;
-	length_x = 0;
-	length_x = ft_strlen(list->karta[0]);
-	while (list->karta[length_y])
-		length_y++;
-	while (i < (length_x -1))
-	{
-		while (j < (length_y - 1))
-		{
-			if (list->karta[j][i] == '1')
-				j = length_y;
-			else if (list->karta[j][i] != ' ' && list->karta[j][i])
-				print_error(-52);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-}
-
 void		check_karta2(t_list *list)
 {
 	int	 i;
@@ -90,38 +30,6 @@ void		check_karta2(t_list *list)
 	}
 }
 
-void		check_karta(t_list *list)
-{
-	int	 i;
-	int	 j;
-	int	 length_x;
-	int	 length_y;
-
-	i = 1;
-	j = 1;
-	length_x = 0;
-	length_y = 0;
-	while (list->karta[length_y])
-		length_y++;
-	length_x = ft_strlen(list->karta[0]);
-	while (j <= (length_y-2))
-	{
-		while (i <= (length_x-2))
-		{
-			if ((list->karta[j][i] == ' ' && (list->karta[j - 1][i] != ' ' && list->karta[j - 1][i] != '1')))
-				print_error(-52);
-			if ((list->karta[j][i] == ' ' && (list->karta[j + 1][i] != ' ' && list->karta[j + 1][i] != '1')))
-				print_error(-52);
-			if ((list->karta[j][i] == ' ' && (list->karta[j][i + 1] != ' ' && list->karta[j][i + 1] != '1')))
-				print_error(-52);
-			if ((list->karta[j][i] == ' ' && (list->karta[j][i - 1] != ' ' && list->karta[j][i - 1] != '1')))
-				print_error(-52);
-			i++;
-		}
-		i = 1;
-		j++;
-	}
-}
 void	 check_player(char c, t_list *list)
 {
 	if (c == 'E' || c == 'S' || c == 'N' || c == 'W')
@@ -185,4 +93,3 @@ char	**big_massiv(char **karta, char *testline)
 	}
 	return (big);
 }
-

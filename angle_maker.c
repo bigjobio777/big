@@ -29,6 +29,7 @@ void	find_pos_x_y(t_list *list)
 		i++;
 	}
 }
+
 void	angle_maker(t_list *list)
 {
 	if (list->playes_location == 'E')

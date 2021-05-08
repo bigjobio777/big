@@ -22,56 +22,37 @@ int	 max_line(t_list *list)
 	list->max_x = max;
 	return (max);
 }
+
 char	**check_map(t_list *list)
 {
-	int	 i = 0;
-	int	 j = 0;
-	int	 length;
-	char	**big;
-
-	big = NULL;
-	length = max_line(list);
-	while (list->karta[i])
-		i++;
-	list->max_y = i;
-	big = (char **)malloc(sizeof(char *) * (i + 2));
-	i = 0;
-	while (list->karta[i])
+	list->length = max_line(list);
+	while (list->karta[list->i])
+		list->i++;
+	list->max_y = list->i;
+	list->tempo = (char **)malloc(sizeof(char *) * (list->i + 2));
+	list->i = 0;
+	while (list->karta[list->i])
 	{
-		big[i] = (char *)malloc(sizeof(char) * (length + 1));
-		while ((j < length))
+		list->tempo[list->i] = (char *)malloc(sizeof(char) * (list->length + 1));
+		while ((list->j < list->length))
 		{
-			if (list->karta[i][j])
+			if (list->karta[list->i][list->j])
 			{
-				big[i][j] = list->karta[i][j];
-				j++;
+				list->tempo[list->i][list->j] = list->karta[list->i][list->j];
+				list->j++;
 			}
 			else 
-				while ((j < length))
-				{
-					big[i][j] = ' ';
-					j++;
-				}
+				while ((list->j < list->length))
+					list->tempo[list->i][list->j++] = ' ';
 		}
-		big[i][j] = '\0';
-		j = 0;
-		i++;
+		list->tempo[list->i++][list->j] = '\0';
+		list->j = 0;
 	}
-	big[i] = NULL;
-	return (big);
+	list->tempo[list->i] = NULL;
+	free(list->karta);
+	return (list->tempo);
 }
-void	last_line_map(char *line)
-{
-	int	 i;
 
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] != ' ' && line[i] != '1')
-			print_error(-51);
-		i++;
-	}
-}
 void	all_line(char *line)
 {
 	int	 i;
@@ -84,6 +65,7 @@ void	all_line(char *line)
 	if (length > 1 && line[length-1] != ' ' && line[length-1] != '1')
 		print_error(-50);
 }
+
 void	first_line(char *line, t_list *list)
 {
 	int	 i;
@@ -99,6 +81,7 @@ void	first_line(char *line, t_list *list)
 		}
 	}
 }
+
 void	parse_1(char *line, t_list *list)
 {
 	int	 i;

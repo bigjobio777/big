@@ -1,35 +1,6 @@
 #include "Libft/libft.h"
 #include "cub3d.h"
 
-void		sort(double *big)
-{
-	int		i;
-	int		j;
-	double	tempo;
-
-	i = 0;
-	j = 1;
-	tempo = 0;
-	if (big[0] == -1)
-		return;
-	while (big[i] != -1)
-	{
-		while (big[j] != -1)
-		{
-			if (big[j] < big[i])
-			{
-				tempo = big[i];
-				big[i] = big[j];
-				big[j] = tempo;
-				i = 0;
-			}
-			j++;
-		}
-		i++;
-        j = i + 1;
-    }
-}
-
 double		*map_sprites(t_list *list, double distance)
 {
 	double		*tempo;
@@ -48,24 +19,13 @@ double		*map_sprites(t_list *list, double distance)
 		while (list->sprites[i] != -1)
 			i++;
 		tempo = (double *)malloc(sizeof(double) * (i + 2));
-		i = 0;
-		while (list->sprites[i] != -1)
-		{
+		i = -1;
+		while (list->sprites[++i] != -1)
 			tempo[i] = list->sprites[i];
-			i++;
-		}
 		tempo[i++] = distance;
 		tempo[i] = -1;
 		free(list->sprites);
 	}
-
-	int		c = 0;
-	while (tempo[c] != -1)
-	{
-		//printf("C == %d   SPRITE == %f\n", c, tempo[c]);
-		c++;
-	}
-	
 	return (tempo);
 }
 
@@ -104,5 +64,3 @@ double		*sprites_4(t_list *list, int x, int y)
 	list->sprites = map_sprites(list, distance);
 	return (NULL);
 }
-
-

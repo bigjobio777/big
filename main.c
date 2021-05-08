@@ -2,29 +2,16 @@
 #include "cub3d.h"
 #include "mlx/mlx.h"
 
-int drawimage(t_list *list)
+void	drawimage_help2(t_list *list)
 {
-	double		x;
-	double		y;
+	cast_rays(list);
+	mlx_do_sync(list->mlx.mlx);
+	mlx_put_image_to_window(list->mlx.mlx, list->mlx.mlx_win, list->data.img, 0, 0);
+	mlx_do_sync(list->mlx.mlx);
+}
 
-	x = list->pos_x;
-	y = list->pos_y;
-	if (list->key_pressed[LEFT] == 1)
-	{	
-		list->pos_angle += step;
-		if (list->pos_angle >= 2 * M_PI)
-			list->pos_angle -= 2 * M_PI;
-		else if (list->pos_angle < 0)
-			list->pos_angle += 2 * M_PI;
-	}
-	if (list->key_pressed[RIGHT] == 1)
-	{
-		list->pos_angle -= step;
-		if (list->pos_angle >= 2 * M_PI)
-			list->pos_angle -= 2 * M_PI;
-		else if (list->pos_angle < 0)
-			list->pos_angle += 2 * M_PI;
-	}
+void	drawimage_help(t_list *list, double x, double y)
+{
 	if (list->key_pressed[W] == 1)
 	{
 		x += (cos(list->pos_angle) * step_player);
@@ -50,16 +37,57 @@ int drawimage(t_list *list)
 		list->pos_x = x;
 		list->pos_y = y;
 	}
-	cast_rays(list);
-	mlx_do_sync(list->mlx.mlx);
-	mlx_put_image_to_window(list->mlx.mlx, list->mlx.mlx_win, list->data.img, 0, 0);
-	mlx_do_sync(list->mlx.mlx);
+}
+int drawimage(t_list *list)
+{
+	double		x;
+	double		y;
+
+	x = list->pos_x;
+	y = list->pos_y;
+	if (list->key_pressed[LEFT] == 1)
+	{	
+		list->pos_angle += step;
+		if (list->pos_angle >= 2 * M_PI)
+			list->pos_angle -= 2 * M_PI;
+		else if (list->pos_angle < 0)
+			list->pos_angle += 2 * M_PI;
+	}
+	if (list->key_pressed[RIGHT] == 1)
+	{
+		list->pos_angle -= step;
+		if (list->pos_angle >= 2 * M_PI)
+			list->pos_angle -= 2 * M_PI;
+		else if (list->pos_angle < 0)
+			list->pos_angle += 2 * M_PI;
+	}
+	drawimage_help(list, x, y);
+	drawimage_help2(list);
 	return (0);
+}
+
+void	*mlx_error(void *ptr)
+{
+	if (ptr == NULL)
+	{
+		print_error(-70);
+	}
+	return (ptr);
 }
 
 void	mlx_starter(t_list *list)
 {
-	list->mlx.mlx = mlx_init();
+	list->mlx.mlx = mlx_error(mlx_init());
+	list->tnorth.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx, list->tnorth.file, &list->tnorth.x, &list->tnorth.y));
+	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
+	list->tsouth.img = mlx_xpm_file_to_image(list->mlx.mlx, list->tsouth.file, &list->tsouth.x, &list->tsouth.y);
+	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
+	list->teast.img = mlx_xpm_file_to_image(list->mlx.mlx, list->teast.file, &list->teast.x, &list->teast.y);
+	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
+	list->twest.img = mlx_xpm_file_to_image(list->mlx.mlx, list->twest.file, &list->twest.x, &list->twest.y);
+	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
+	list->tsprite.img = mlx_xpm_file_to_image(list->mlx.mlx, list->tsprite.file, &list->tsprite.x, &list->tsprite.y);
+	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
 	list->mlx.mlx_win = mlx_new_window(list->mlx.mlx, list->r_x, list->r_y, "Hello world!");
 	list->data.img = mlx_new_image(list->mlx.mlx, list->r_x, list->r_y);
 	list->data.addr = (int*)mlx_get_data_addr(list->data.img, &list->data.bits_per_pixel, &list->data.line_length, &list->data.endian);

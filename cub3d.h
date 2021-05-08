@@ -38,6 +38,17 @@
 # define west 0x00FF00
 
 # define step 0.01
+typedef struct	s_texture
+{
+	int		x;
+	int		y;
+	void	*img;
+	char 	*file;
+	int		*addr;
+	int		 bits_per_pixel;
+	int		 line_length;
+	int		 endian;
+}				t_texture;
 
 typedef struct				  s_mlx
 {
@@ -58,11 +69,12 @@ typedef struct				  s_list
 {
 	int	 r_x;
 	int	 r_y;
-	char	*path_to_north;
-	char	*path_to_south;
-	char	*path_to_west;
-	char	*path_to_east;
-	char	*path_to_sprite;
+	
+	t_texture tnorth;
+	t_texture tsouth;
+	t_texture twest;
+	t_texture teast;
+	t_texture tsprite;
 	int	 floor_red;
 	int	 floor_green;
 	int	 floor_blue;
@@ -85,6 +97,12 @@ typedef struct				  s_list
 	id_t	max_y;
 	t_mlx   mlx;
 	t_data  data;
+	int		i;
+	int		j;
+	int		length;
+	char	**tempo;
+	double wall_distancex;
+	double wall_distancey;
 }							   t_list;
 
 
@@ -117,7 +135,7 @@ void		cast_rays(t_list *list);
 void	angle_maker(t_list *list);
 int	 max_line(t_list *list);
 char		**make_karta(t_list *list);
-void	stolbec(t_list *list, int stolbec, double dist, int color);
+void	stolbec(t_list *list, int stolbec, double dist, double walldistance, int color);
 void			my_mlx_pixel_put(t_list *list, int x, int y, int color);
 int		key_hook_stop(int keycode, t_list *list);
 int		key_hook_exit(int	keycode, t_list *list);
@@ -127,4 +145,5 @@ double		*sprites_2(t_list *list, int x, int y);
 double		*sprites_3(t_list *list, int x, int y);
 double		*sprites_4(t_list *list, int x, int y);
 void		sort(double *big);
+void		clean_tempo(t_list *list);
 #endif
