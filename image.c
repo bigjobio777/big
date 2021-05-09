@@ -24,6 +24,7 @@ int	 key_hook(int keycode, t_list *list)
 
 int		key_hook_exit(int	keycode, t_list *list)
 {
+	list->unused = keycode;
 	exit(0);
 }
 
@@ -84,7 +85,6 @@ void	stolbec(t_list *list, int stolbec, double dist, double walldistance, int co
 		my_mlx_pixel_put(list, stolbec, i, 0x115120);
 		i++;
 	}
-	char * col;
 
 	int k = 0;
 
