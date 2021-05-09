@@ -10,9 +10,9 @@ all: Makelib cub3D
 Makelib: 
 	make -C Libft
 	make -C mlx
-	cp mlx/libmlx.dylib libmlx.dylib 
-cub3D: $(OBJS) Libft/libft.a mlx/libmlx.dylib
-	$(CC) -g -framework OpenGL -Lmlx -lmlx -framework AppKit $(CFLAGS) $(OBJS) -LLibft -lft -o $(NAME)
+	cp mlx/libmlx.a libmlx.a
+cub3D: $(OBJS) Libft/libft.a mlx/libmlx.a
+	$(CC) -g $(CFLAGS) $(OBJS) -lm -LLibft -lft -Lmlx -lmlx -lXext -lX11 -o $(NAME)
 
 debug:
 	make all CFLAGS+="$(CFLAGS) -g"
