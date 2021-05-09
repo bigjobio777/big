@@ -107,6 +107,8 @@ void	print_error(int numerror)
 		printf("Error\nLast line in map not valid\n");
 	else if (numerror == (-52))
 		printf("Error\nNot valid map\n");
+	else if (numerror == (-70))
+		printf("Error\nMlx error\n");
 	exit(1);
 }
 

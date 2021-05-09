@@ -19,7 +19,7 @@ int	 key_hook(int keycode, t_list *list)
 		list->key_pressed[D] = 1;
 	printf("UGOL == %f\n", list->pos_angle);
 	printf("Position po x == %f, Position po y = %f\n", list->pos_x, list->pos_y);
-return (0);
+	return (0);
 }
 
 int		key_hook_exit(int	keycode, t_list *list)
@@ -45,57 +45,60 @@ int		key_hook_stop(int keycode, t_list *list)
 	return (0);
 }
 
-void	stolbec(t_list *list, int stolbec, double dist, int color)
+void	stolbec_help(t_list *list, int stolbec)
+{
+	int		i;
+	int		j;
+	double	visota;
+
+	i = 0;
+	j = 0;
+	while (list->sprites[i] != -1)
+	{
+		visota = ((list->focus / (list->sprites[i])) * list->r_x);
+		j = (list->r_y - visota) / 2;
+		while(j < (list->r_y + visota) / 2 && j < list->r_y)
+		{	
+			if (j >= 0 && (i + j) % 3 == 0)
+			{
+				my_mlx_pixel_put(list, stolbec, j, (i % 2 == 0) ? 0xAA66BB : 0);
+			}
+			j++;
+		}
+		i++;
+	}
+
+}
+void	stolbec(t_list *list, int stolbec, double dist, double walldistance, int color)
 {
 	int	 i;
-	int	 nachalo;
-	int	 konec;
-	double	tempo_dist;
 	double	visota;
-	int		help_i;
 
-	help_i = 0;
 	i = 0;
-	nachalo = 0;
-	konec = 0;
-	tempo_dist = dist;
-	visota = (list->focus / dist) * list->r_y;
-	//printf("%f\n", list->sprites[0]);
+	visota = (list->focus / dist) * list->r_x;
+	list->sprites = (list->sprites);
+	sort(list->sprites);
 	while (i <= (list->r_y - visota) / 2 && i < list->r_y)
 	{
 		my_mlx_pixel_put(list, stolbec, i, 0x115120);
 		i++;
 	}
+	char * col;
+
+	int k = 0;
 
 	while (i <= (list->r_y + visota) / 2 && i < list->r_y)
 	{
-		my_mlx_pixel_put(list, stolbec, i, color);
+		color = ((list->tnorth.y / visota) * k) * list->tnorth.x + (int)((1 - walldistance) * (list->tnorth.x));
+		//col = (char*)list->tnorth.addr + (* k * list->tnorth.line_length + stolbec * (list->tnorth.bits_per_pixel / 8));
+		my_mlx_pixel_put(list, stolbec, i, list->tnorth.addr[color]);
 		i++;
+		k++;
 	}
 	while (i < list->r_y)
 	{
 		my_mlx_pixel_put(list, stolbec, i, 0x0000FF);
 		i++;
 	}
-	i = 0;
-	int j;
-	while (list->sprites[i] != -1)
-	{
-		visota = (list->focus / list->sprites[i]) * list->r_y;
-		j = (list->r_y - visota) / 2;
-		while(j < (list->r_y + visota) / 2 && j < list->r_y && j >= 0)
-		{	
-			my_mlx_pixel_put(list, stolbec, j, 0x051204);
-			j++;
-		}
-		i++;
-	}
-	
-}
-void			my_mlx_pixel_put(t_list *list, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = list->data.addr + (y * list->data.line_length + x * (list->data.bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	stolbec_help(list, stolbec);
 }
