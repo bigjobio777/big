@@ -232,7 +232,6 @@ void		cast_rays(t_list *list)
 	double	  second;
 	int		 i;
 	int		 y;
-	double	  visota;
 
 	i = 0;
 	y = 0;

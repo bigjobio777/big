@@ -101,7 +101,6 @@ int save_bmp(t_list *list)
 {
 	int		fd;
 	fd = open("scrnsht.bmp", O_CREAT | O_WRONLY | O_TRUNC, 444);
-	int a = 0;
 	write(fd, &(unsigned short){0x4d42}, 2);
 	write(fd, &(unsigned int){54 + list->r_x * list->r_y * 4}, 4);
 	write(fd, &(unsigned short){0}, 2);

@@ -17,6 +17,7 @@ void		init_flags2(t_list *big)
 	big->j = 0;
 	big->length = 0;
 	big->tempo = NULL;
+	big->unused = 0;
 
 }
 

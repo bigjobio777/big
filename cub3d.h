@@ -94,7 +94,7 @@ typedef struct				  s_list
 	int	 max_x;
 	double  focus;
     char    key_pressed[127]; 
-	id_t	max_y;
+	int		max_y;
 	t_mlx   mlx;
 	t_data  data;
 	int		i;
@@ -103,6 +103,7 @@ typedef struct				  s_list
 	char	**tempo;
 	double wall_distancex;
 	double wall_distancey;
+	int		unused;
 }							   t_list;
 
 
