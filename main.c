@@ -88,19 +88,14 @@ void	mlx_starter(t_list *list)
 	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
 	list->tsprite.img = mlx_xpm_file_to_image(list->mlx.mlx, list->tsprite.file, &list->tsprite.x, &list->tsprite.y);
 	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
-	list->mlx.mlx_win = mlx_new_window(list->mlx.mlx, list->r_x, list->r_y, "Hello world!");
 	list->data.img = mlx_new_image(list->mlx.mlx, list->r_x, list->r_y);
 	list->data.addr = (int*)mlx_get_data_addr(list->data.img, &list->data.bits_per_pixel, &list->data.line_length, &list->data.endian);
-	mlx_hook(list->mlx.mlx_win, 02, (1L<<0), key_hook, list);
-	mlx_hook(list->mlx.mlx_win, 17, (1L<<17), key_hook_exit, list);
-	mlx_hook(list->mlx.mlx_win, 03, (1L<<1), key_hook_stop, list);
-	mlx_loop_hook(list->mlx.mlx, drawimage, list);
 }
 
 int save_bmp(t_list *list)
 {
 	int		fd;
-	fd = open("scrnsht.bmp", O_CREAT | O_WRONLY | O_TRUNC, 444);
+	fd = open("save.bmp", O_CREAT | O_WRONLY | O_TRUNC, 444);
 	int a = 0;
 	write(fd, &(unsigned short){0x4d42}, 2);
 	write(fd, &(unsigned int){54 + list->r_x * list->r_y * 4}, 4);
@@ -119,13 +114,10 @@ int save_bmp(t_list *list)
 	write(fd, &(unsigned int){0}, 4);
 	write(fd, &(unsigned int){0}, 4);
 	write(fd, &(unsigned int){0}, 4);
-	list->mlx.mlx = mlx_init();
-	list->data.img = mlx_new_image(list->mlx.mlx, list->r_x, list->r_y);
-	list->data.addr = (int*)mlx_get_data_addr(list->data.img, &list->data.bits_per_pixel, &list->data.line_length, &list->data.endian);
-	cast_rays(list);
 	int i;
 	int j;
 	i = 0;
+	cast_rays(list);
 	while (i < list->r_y)
 	{
 		j = 0;
@@ -147,12 +139,17 @@ int	 main(int argc, char **argv)
 	
 	init_flags(&list);
 	gnl(argc, argv, &list);
+	mlx_starter(&list);
 	if (argc == 3)
 	{
 		save_bmp(&list);
 		exit(0);
 	}
-	mlx_starter(&list);
+	list.mlx.mlx_win = mlx_new_window(list.mlx.mlx, list.r_x, list.r_y, "Cub3D");
+	mlx_hook(list.mlx.mlx_win, 02, (1L<<0), key_hook, &list);
+	mlx_hook(list.mlx.mlx_win, 17, (1L<<17), key_hook_exit, &list);
+	mlx_hook(list.mlx.mlx_win, 03, (1L<<1), key_hook_stop, &list);
+	mlx_loop_hook(list.mlx.mlx, drawimage, &list);
 	mlx_loop(list.mlx.mlx);
 	return (0);
 }

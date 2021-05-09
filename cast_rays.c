@@ -249,33 +249,33 @@ void		cast_rays(t_list *list)
 			else 
 				stolbec(list, i, second * cos(tempo - list->pos_angle), list->wall_distancey, north);
 		}
-		// else if (tempo >= (M_PI_2) && tempo < M_PI)
-		// {
-		// 	first = cast_ray_x_2(list, tempo);
-		// 	second = cast_ray_y_2(list,tempo);
-		// 	if (first < second)
-		// 		stolbec(list, i, first * cos(tempo - list->pos_angle), west);
-		// 	else 
-		// 		stolbec(list, i, second * cos(tempo - list->pos_angle), north);
-		// }
-		// else if (tempo >= M_PI && tempo < (3 * (M_PI_2)))
-		// {
-		// 	first = cast_ray_x_3(list, tempo);
-		// 	second = cast_ray_y_3(list,tempo);
-		// 	if (first < second)
-		// 		stolbec(list, i, first * cos(tempo - list->pos_angle), west);
-		// 	else 
-		// 		stolbec(list, i, second * cos(tempo - list->pos_angle), south);
-		// }
-		// else if ((tempo >= (3 * (M_PI / 2)) && tempo < (2 * M_PI)) || (tempo >= -M_PI_2 && tempo <= 0))
-		// {
-		// 	first = cast_ray_x_4(list, tempo);
-		// 	second = cast_ray_y_4(list,tempo);
-		// 	if (first < second)
-		// 		stolbec(list, i, first * cos(tempo - list->pos_angle), east);
-		// 	else 
-		// 		stolbec(list, i, second * cos(tempo - list->pos_angle), south);
-		// }
+		else if (tempo >= (M_PI_2) && tempo < M_PI)
+		{
+			first = cast_ray_x_2(list, tempo);
+			second = cast_ray_y_2(list,tempo);
+			if (first < second)
+				stolbec(list, i, first * cos(tempo - list->pos_angle), list->wall_distancex, west);
+			else 
+				stolbec(list, i, second * cos(tempo - list->pos_angle), list->wall_distancey, north);
+		}
+		else if (tempo >= M_PI && tempo < (3 * (M_PI_2)))
+		{
+			first = cast_ray_x_3(list, tempo);
+			second = cast_ray_y_3(list,tempo);
+			if (first < second)
+				stolbec(list, i, first * cos(tempo - list->pos_angle),list->wall_distancex, west);
+			else 
+				stolbec(list, i, second * cos(tempo - list->pos_angle),list->wall_distancey, south);
+		}
+		else if ((tempo >= (3 * (M_PI / 2)) && tempo < (2 * M_PI)) || (tempo >= -M_PI_2 && tempo <= 0))
+		{
+			first = cast_ray_x_4(list, tempo);
+			second = cast_ray_y_4(list,tempo);
+			if (first < second)
+				stolbec(list, i, first * cos(tempo - list->pos_angle),list->wall_distancex, east);
+			else 
+				stolbec(list, i, second * cos(tempo - list->pos_angle),list->wall_distancey, south);
+		}
 		i++;
 		tempo -= increment_FOV;
 		list->sprites[0] = -1;

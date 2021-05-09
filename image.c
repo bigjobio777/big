@@ -59,6 +59,7 @@ void	stolbec_help(t_list *list, int stolbec)
 		j = (list->r_y - visota) / 2;
 		while(j < (list->r_y + visota) / 2 && j < list->r_y)
 		{	
+			// col = (char*)list->tnorth.addr + (int)(k * list->tnorth.y / visota )* list->tnorth.line_length + (int)(walldistance * list->tnorth.x) * (list->tnorth.bits_per_pixel / 8);
 			if (j >= 0 && (i + j) % 3 == 0)
 			{
 				my_mlx_pixel_put(list, stolbec, j, (i % 2 == 0) ? 0xAA66BB : 0);
@@ -89,9 +90,8 @@ void	stolbec(t_list *list, int stolbec, double dist, double walldistance, int co
 
 	while (i <= (list->r_y + visota) / 2 && i < list->r_y)
 	{
-		color = ((list->tnorth.y / visota) * k) * list->tnorth.x + (int)((1 - walldistance) * (list->tnorth.x));
-		//col = (char*)list->tnorth.addr + (* k * list->tnorth.line_length + stolbec * (list->tnorth.bits_per_pixel / 8));
-		my_mlx_pixel_put(list, stolbec, i, list->tnorth.addr[color]);
+		col = (char*)list->tnorth.addr + (int)(k * list->tnorth.y / visota )* list->tnorth.line_length + (int)(walldistance * list->tnorth.x) * (list->tnorth.bits_per_pixel / 8);
+		my_mlx_pixel_put(list, stolbec, i, *(unsigned int*)col);
 		i++;
 		k++;
 	}
