@@ -3,16 +3,16 @@ SRC := main.c errors.c init_flags.c gnl.c all_for_parse/parse_for_map.c all_for_
 OBJS := $(SRC:.c=.o)
 CC := gcc
 D := $(SRC:.c=.d)
-CFLAGS ?= -MMD -Imlx -ILibft -g -fsanitize=address -Wall -Wextra -Werror
+CFLAGS ?= -MMD -Imlx -ILibft -g -fsanitize=address#-Wall -Wextra -Werror
 
 all: Makelib cub3D
 
 Makelib: 
 	make -C Libft
 	make -C mlx
-	cp mlx/libmlx.a libmlx.a
-cub3D: $(OBJS) Libft/libft.a mlx/libmlx.a
-	$(CC) -g $(CFLAGS) $(OBJS) -lm -LLibft -lft -Lmlx -lmlx -lXext -lX11 -o $(NAME)
+	cp mlx/libmlx.dylib libmlx.dylib 
+cub3D: $(OBJS) Libft/libft.a mlx/libmlx.dylib
+	$(CC) -g -framework OpenGL -Lmlx -lmlx -framework AppKit $(CFLAGS) $(OBJS) -LLibft -lft -o $(NAME)
 
 debug:
 	make all CFLAGS+="$(CFLAGS) -g"
@@ -23,7 +23,6 @@ clean :
 	rm -f gnl/*.o
 	rm -f all_for_parse/*.o
 	rm -f libmlx.dylib
-	rm -f scrnsht.bmp
 
 fclean : clean
 	make fclean -C Libft

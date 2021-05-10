@@ -46,7 +46,7 @@ int		key_hook_stop(int keycode, t_list *list)
 	return (0);
 }
 
-void	stolbec_help(t_list *list, int stolbec)
+void	stolbec_help(t_list *list, int stolbec, double walldistance)
 {
 	int		i;
 	int		j;
@@ -69,7 +69,6 @@ void	stolbec_help(t_list *list, int stolbec)
 		}
 		i++;
 	}
-
 }
 void	stolbec(t_list *list, int stolbec, double dist, double walldistance, int color)
 {
@@ -87,10 +86,22 @@ void	stolbec(t_list *list, int stolbec, double dist, double walldistance, int co
 	}
 
 	int k = 0;
+	char	*col;
+	if (visota > list->r_y)
+	{
+		k = (visota - list->r_y) / 2;
+	}
 
 	while (i <= (list->r_y + visota) / 2 && i < list->r_y)
 	{
-		col = (char*)list->tnorth.addr + (int)(k * list->tnorth.y / visota )* list->tnorth.line_length + (int)(walldistance * list->tnorth.x) * (list->tnorth.bits_per_pixel / 8);
+		if (color == north)
+			col = (char*)list->tnorth.addr + (int)(k * list->tnorth.y / visota )* list->tnorth.line_length + (int)(walldistance * list->tnorth.x) * (list->tnorth.bits_per_pixel / 8);
+		else if (color == south)
+			col = (char*)list->tsouth.addr + (int)(k * list->tsouth.y / visota )* list->tsouth.line_length + (int)(walldistance * list->tsouth.x) * (list->tsouth.bits_per_pixel / 8);
+		else if (color == west)
+			col = (char*)list->twest.addr + (int)(k * list->twest.y / visota )* list->twest.line_length + (int)(walldistance * list->twest.x) * (list->twest.bits_per_pixel / 8);
+		else if (color == east)
+			col = (char*)list->teast.addr + (int)(k * list->teast.y / visota )* list->teast.line_length + (int)(walldistance * list->teast.x) * (list->teast.bits_per_pixel / 8);
 		my_mlx_pixel_put(list, stolbec, i, *(unsigned int*)col);
 		i++;
 		k++;
@@ -100,5 +111,5 @@ void	stolbec(t_list *list, int stolbec, double dist, double walldistance, int co
 		my_mlx_pixel_put(list, stolbec, i, 0x0000FF);
 		i++;
 	}
-	stolbec_help(list, stolbec);
+	stolbec_help(list, stolbec, walldistance);
 }

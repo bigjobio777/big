@@ -81,11 +81,11 @@ void	mlx_starter(t_list *list)
 	list->tnorth.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx, list->tnorth.file, &list->tnorth.x, &list->tnorth.y));
 	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
 	list->tsouth.img = mlx_xpm_file_to_image(list->mlx.mlx, list->tsouth.file, &list->tsouth.x, &list->tsouth.y);
-	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
+	list->tsouth.addr = (int*)mlx_get_data_addr(list->tsouth.img, &list->tsouth.bits_per_pixel, &list->tsouth.line_length, &list->tsouth.endian);
 	list->teast.img = mlx_xpm_file_to_image(list->mlx.mlx, list->teast.file, &list->teast.x, &list->teast.y);
-	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
+	list->teast.addr = (int*)mlx_get_data_addr(list->teast.img, &list->teast.bits_per_pixel, &list->teast.line_length, &list->teast.endian);
 	list->twest.img = mlx_xpm_file_to_image(list->mlx.mlx, list->twest.file, &list->twest.x, &list->twest.y);
-	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
+	list->twest.addr = (int*)mlx_get_data_addr(list->twest.img, &list->twest.bits_per_pixel, &list->twest.line_length, &list->twest.endian);
 	list->tsprite.img = mlx_xpm_file_to_image(list->mlx.mlx, list->tsprite.file, &list->tsprite.x, &list->tsprite.y);
 	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
 	list->data.img = mlx_new_image(list->mlx.mlx, list->r_x, list->r_y);

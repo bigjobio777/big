@@ -26,7 +26,7 @@ double		cast_ray_x_1(t_list *list, double tempo)
 		dot_y = length_y + list->pos_y;
 	}
 	length_for_wall = fabs(length_y / sin(tempo));
-	list->wall_distancex = dot_y - (int)dot_y;
+	list->wall_distancex = 1 - (dot_y - (int)dot_y);
 	return(length_for_wall);
 }
 
@@ -83,6 +83,7 @@ double		cast_ray_x_2(t_list   *list, double tempo)
 		length_y = length_x * tan(tempo);
 		dot_y = length_y + list->pos_y;
 	}
+	list->wall_distancex = dot_y - (int)dot_y;
 	length_for_wall = fabs(length_x / cos(tempo));
 	return(length_for_wall);
 }
@@ -110,7 +111,7 @@ double	   cast_ray_y_2(t_list   *list, double tempo)
 		length_x = length_y / tan(tempo);
 		dot_x = list->pos_x + length_x;
 	}
-
+	list->wall_distancey = dot_x - (int)dot_x;
 	length_for_wall = fabs(length_y / sin(tempo));
 	return(length_for_wall);
 }
@@ -138,6 +139,7 @@ double		cast_ray_x_3(t_list   *list, double tempo)
 		length_y = length_x * tan(tempo);
 		dot_y = length_y + list->pos_y;
 	}
+	list->wall_distancex = dot_y - (int)dot_y;
 	length_for_wall = fabs(length_x / cos(tempo));
 	return(length_for_wall);
 }
@@ -166,6 +168,7 @@ double	   cast_ray_y_3(t_list   *list, double tempo)
 		length_x = length_y / tan(tempo);
 		dot_x = length_x + list->pos_x;
 	}
+	list->wall_distancey = 1 - (dot_x - (int)dot_x);
 	length_for_wall = fabs(length_y / sin(tempo));
 	return(length_for_wall);
 }
@@ -193,6 +196,7 @@ double		cast_ray_x_4(t_list *list, double tempo)
 		length_y = length_x * tan(tempo);
 		dot_y = length_y + list->pos_y;
 	}
+	list->wall_distancex = 1 - (dot_y - (int)dot_y);
 	length_for_wall = fabs(length_x / cos(tempo));
 	return(length_for_wall);
 }
@@ -220,6 +224,7 @@ double		cast_ray_y_4(t_list *list, double tempo)
 		length_x = length_y / tan(tempo);
 		dot_x = length_x + list->pos_x;
 	}
+	list->wall_distancey = 1 - (dot_x - (int)dot_x);
 	length_for_wall = fabs(length_y / sin(tempo));
 	return(length_for_wall);
 }
