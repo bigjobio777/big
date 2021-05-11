@@ -29,11 +29,13 @@ double		*map_sprites(t_list *list, double distance)
 	return (tempo);
 }
 
-double		*sprites_1(t_list *list, int x, int y)
+double		*sprites_1(t_list *list, int x, int y, double tempo)
 {
 	double	distance;
 
 	distance = sqrt(((x + 0.5 - list->pos_x) * (x + 0.5 - list->pos_x)) + ((y + 0.5 - list->pos_y) * (y + 0.5 - list->pos_y)));
+	double b = asin((y + 0.5 - list->pos_y) / distance);
+	list->texturecolumn[0] = distance * tan(b - tempo) ;
 	list->sprites = map_sprites(list, distance);
 	return (NULL);
 }

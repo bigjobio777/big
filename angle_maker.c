@@ -39,6 +39,6 @@ void	angle_maker(t_list *list)
 	else if (list->playes_location == 'W')
 		list->pos_angle = M_PI;
 	else if (list->playes_location == 'S')
-		list->pos_angle =(3 * M_PI) / 2;
+		list->pos_angle = (3 * M_PI) / 2;
 	find_pos_x_y(list);
 }

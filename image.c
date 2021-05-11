@@ -17,8 +17,8 @@ int	 key_hook(int keycode, t_list *list)
 		list->key_pressed[A] = 1;
 	else if (keycode == D)
 		list->key_pressed[D] = 1;
-	printf("UGOL == %f\n", list->pos_angle);
-	printf("Position po x == %f, Position po y = %f\n", list->pos_x, list->pos_y);
+	//printf("UGOL == %f\n", list->pos_angle);
+	//printf("Position po x == %f, Position po y = %f\n", list->pos_x, list->pos_y);
 	return (0);
 }
 
@@ -46,7 +46,7 @@ int		key_hook_stop(int keycode, t_list *list)
 	return (0);
 }
 
-void	stolbec_help(t_list *list, int stolbec, double walldistance)
+void	stolbec_help(t_list *list, int stolbec)
 {
 	int		i;
 	int		j;
@@ -57,19 +57,24 @@ void	stolbec_help(t_list *list, int stolbec, double walldistance)
 	while (list->sprites[i] != -1)
 	{
 		visota = ((list->focus / (list->sprites[i])) * list->r_x);
+		int k = 0;
 		j = (list->r_y - visota) / 2;
 		while(j < (list->r_y + visota) / 2 && j < list->r_y)
 		{	
 			// col = (char*)list->tnorth.addr + (int)(k * list->tnorth.y / visota )* list->tnorth.line_length + (int)(walldistance * list->tnorth.x) * (list->tnorth.bits_per_pixel / 8);
-			if (j >= 0 && (i + j) % 3 == 0)
+			if (j >= 0)
 			{
-				my_mlx_pixel_put(list, stolbec, j, (i % 2 == 0) ? 0xAA66BB : 0);
+				int color = list->tnorth.addr[(int)(k * list->tnorth.y / visota )*list->tnorth.x + (int)(list->texturecolumn[i] * list->tnorth.x)];
+				if (color != 0)
+					my_mlx_pixel_put(list, stolbec, j, color);
 			}
 			j++;
+			k++;
 		}
 		i++;
 	}
 }
+
 void	stolbec(t_list *list, int stolbec, double dist, double walldistance, int color)
 {
 	int	 i;
@@ -111,5 +116,5 @@ void	stolbec(t_list *list, int stolbec, double dist, double walldistance, int co
 		my_mlx_pixel_put(list, stolbec, i, 0x0000FF);
 		i++;
 	}
-	stolbec_help(list, stolbec, walldistance);
+	stolbec_help(list, stolbec);
 }

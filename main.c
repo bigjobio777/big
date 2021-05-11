@@ -87,7 +87,7 @@ void	mlx_starter(t_list *list)
 	list->twest.img = mlx_xpm_file_to_image(list->mlx.mlx, list->twest.file, &list->twest.x, &list->twest.y);
 	list->twest.addr = (int*)mlx_get_data_addr(list->twest.img, &list->twest.bits_per_pixel, &list->twest.line_length, &list->twest.endian);
 	list->tsprite.img = mlx_xpm_file_to_image(list->mlx.mlx, list->tsprite.file, &list->tsprite.x, &list->tsprite.y);
-	list->tnorth.addr = (int*)mlx_get_data_addr(list->tnorth.img, &list->tnorth.bits_per_pixel, &list->tnorth.line_length, &list->tnorth.endian);
+	list->tsprite.addr = (int*)mlx_get_data_addr(list->tsprite.img, &list->tsprite.bits_per_pixel, &list->tsprite.line_length, &list->tsprite.endian);
 	list->data.img = mlx_new_image(list->mlx.mlx, list->r_x, list->r_y);
 	list->data.addr = (int*)mlx_get_data_addr(list->data.img, &list->data.bits_per_pixel, &list->data.line_length, &list->data.endian);
 }
@@ -96,7 +96,6 @@ int save_bmp(t_list *list)
 {
 	int		fd;
 	fd = open("save.bmp", O_CREAT | O_WRONLY | O_TRUNC, 444);
-	int a = 0;
 	write(fd, &(unsigned short){0x4d42}, 2);
 	write(fd, &(unsigned int){54 + list->r_x * list->r_y * 4}, 4);
 	write(fd, &(unsigned short){0}, 2);
@@ -146,6 +145,7 @@ int	 main(int argc, char **argv)
 		exit(0);
 	}
 	list.mlx.mlx_win = mlx_new_window(list.mlx.mlx, list.r_x, list.r_y, "Cub3D");
+	list.texturecolumn = malloc(100000);
 	mlx_hook(list.mlx.mlx_win, 02, (1L<<0), key_hook, &list);
 	mlx_hook(list.mlx.mlx_win, 17, (1L<<17), key_hook_exit, &list);
 	mlx_hook(list.mlx.mlx_win, 03, (1L<<1), key_hook_stop, &list);

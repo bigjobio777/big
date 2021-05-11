@@ -46,7 +46,7 @@ char	**mem_words(char **main_array, char const *s, char c, int index)
 
 	lc = 0;
 	i = 0;
-	while (s[index] && index <= (int)ft_strlen(s))
+	while ( index <= (int)ft_strlen(s) && s[index] )
 	{
 		while (s[index] != c && s[index])
 		{
@@ -77,7 +77,7 @@ char	**collect_data(char **main_array, char const *s, char c)
 	len_chars = 0;
 	index = 0;
 	main_index = 0;
-	while (s[index] && index <= (int)ft_strlen(s))
+	while (index <= (int)ft_strlen(s) && s[index])
 	{
 		while (s[index] != c && s[index])
 		{

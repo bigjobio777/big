@@ -15,7 +15,7 @@ OBJS_D := objs/
 HEAD := -I .
 #HEAD := -I includes/
 
-CFLAGS = -MMD -Wall -Wextra -Werror -g # -fsanitize=address
+CFLAGS = -MMD -Wall -Wextra -Werror -g  -fsanitize=address
 
 SRC := \
 		ft_memset.c \
@@ -68,7 +68,7 @@ $(NAME) : $(OBJS)
 			ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-		gcc $(CFLAGS) $(HEAD) -c $< -o $@
+		clang $(CFLAGS) $(HEAD) -c $< -o $@
 
 clean:
 		rm -rf $(OBJS)

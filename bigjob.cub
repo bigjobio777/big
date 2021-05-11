@@ -1,14 +1,14 @@
 R  800 800
-SO textures/south.xpm
-NO textures/north.xpm
+SO textures/north.xpm
+NO textures/south.xpm
 WE textures/west.xpm
 EA textures/east.xpm
-S  textures/sprite.xpm
+S  textures/north.xpm
 F 253,14,255
 C 100,10,222
 
-11111
-10001
-10101
-10N01
-11111
+1111111111
+1000000001
+1000200101
+10N0000001
+1111111111

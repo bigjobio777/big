@@ -21,6 +21,7 @@
 # include <errno.h>
 # include "gnl/get_next_line.h"
 # include <math.h>
+# include "Libft/libft.h"
 
 # define ESC 53
 # define W 13
@@ -86,6 +87,7 @@ typedef struct				  s_list
 	int	 bil_1;
 	char	 playes_location;
 	double 	*sprites;
+	double 	*texturecolumn;
 	char	**karta;
 	double  pos_x;
 	double  pos_y;
@@ -141,10 +143,21 @@ void			my_mlx_pixel_put(t_list *list, int x, int y, int color);
 int		key_hook_stop(int keycode, t_list *list);
 int		key_hook_exit(int	keycode, t_list *list);
 int	 key_hook(int keycode, t_list *list);
-double		*sprites_1(t_list *list, int x, int y);
+double		*sprites_1(t_list *list, int x, int y, double tempo);
 double		*sprites_2(t_list *list, int x, int y);
 double		*sprites_3(t_list *list, int x, int y);
 double		*sprites_4(t_list *list, int x, int y);
 void		sort(double *big);
 void		clean_tempo(t_list *list);
+double	cast_ray_x_3(t_list *list, double tempo);
+double	cast_ray_y_3(t_list *list, double tempo);
+double	cast_ray_x_4(t_list *list, double tempo);
+double	cast_ray_y_4(t_list *list, double tempo);
+double	cast_ray_x_1(t_list *list, double tempo);
+double	cast_ray_y_1(t_list *list, double tempo);
+double	cast_ray_x_2(t_list *list, double tempo);
+double	cast_ray_y_2(t_list *list, double tempo);
+void	first_quatre(t_list *list, double tempo, int i);
+void	second_quatre(t_list *list, double tempo, int i);
+void	third_quatre(t_list *list, double tempo, int i);
 #endif
