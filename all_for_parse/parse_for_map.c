@@ -50,7 +50,7 @@ void	parse_NO_SO(t_list *list, char **big)
 		print_error(-15);
 	list->tnorth.file = ft_strdup(big[1]);
 	}
-	else 
+	else if (!ft_strcmp(big[0], "SO"))
 	{
 		if (big[2] != NULL)
 			print_error(-19);
@@ -74,7 +74,7 @@ void	parse_WE_EA(t_list *list, char **big)
 		print_error(-17);
 	list->twest.file = ft_strdup(big[1]);
 	}
-	else
+	else if (!ft_strcmp(big[0], "EA"))
 	{
 		if (big[2] != NULL)
 		print_error(-21);

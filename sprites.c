@@ -29,40 +29,15 @@ double		*map_sprites(t_list *list, double distance)
 	return (tempo);
 }
 
-double		*sprites_1(t_list *list, int x, int y, double tempo)
+double		*sprites_1(t_list *list, double x, double y, double tempo)
 {
 	double	distance;
-
-	distance = sqrt(((x + 0.5 - list->pos_x) * (x + 0.5 - list->pos_x)) + ((y + 0.5 - list->pos_y) * (y + 0.5 - list->pos_y)));
-	double b = asin((y + 0.5 - list->pos_y) / distance);
-	list->texturecolumn[0] = distance * tan(b - tempo) ;
-	list->sprites = map_sprites(list, distance);
-	return (NULL);
-}
-
-double		*sprites_2(t_list *list, int x, int y)
-{
-	double	distance;
-
-	distance = sqrt(((list->pos_x - x - 0.5) * (list->pos_x - x - 0.5)) + ((list->pos_y - y - 0.5) * (list->pos_y - y - 0.5)));
-	list->sprites = map_sprites(list, distance);
-	return (NULL);
-}
-
-double		*sprites_3(t_list *list, int x, int y)
-{
-	double	distance;
-
-	distance = sqrt(((list->pos_x - x - 0.5) * (list->pos_x - x - 0.5)) + ((list->pos_y - y - 0.5) * ((list->pos_y - y - 0.5))));
-	list->sprites = map_sprites(list, distance);
-	return (NULL);
-}
-
-double		*sprites_4(t_list *list, int x, int y)
-{
-	double	distance;
-
-	distance = sqrt(((x + 0.5 - list->pos_x) * (x + 0.5 - list->pos_x)) + ((list->pos_y - y - 0.5) * (list->pos_y - y - 0.5)));
+	distance = sqrt(((x - list->pos_x) * (x - list->pos_x)) + ((y - list->pos_y) * (y - list->pos_y)));
+	double b = asin((y - list->pos_y)/ distance);
+	if (list->pos_x > x)
+		b = -b;
+	b += M_PI;
+	list->texturecolumn[0] = distance * tan(tempo - b);
 	list->sprites = map_sprites(list, distance);
 	return (NULL);
 }

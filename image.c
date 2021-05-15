@@ -58,13 +58,14 @@ void	stolbec_help(t_list *list, int stolbec)
 	{
 		visota = ((list->focus / (list->sprites[i])) * list->r_x);
 		int k = 0;
-		j = (list->r_y - visota) / 2;
+		if (visota > list->r_y)
+			k = (visota - list->r_y) / 2;
+		j = fmax((list->r_y - visota) / 2, 0);
 		while(j < (list->r_y + visota) / 2 && j < list->r_y)
 		{	
-			// col = (char*)list->tnorth.addr + (int)(k * list->tnorth.y / visota )* list->tnorth.line_length + (int)(walldistance * list->tnorth.x) * (list->tnorth.bits_per_pixel / 8);
-			if (j >= 0)
+			if (j >= 0 && (list->texturecolumn[i] < 0.5 && list->texturecolumn[i] > -0.5))
 			{
-				int color = list->tnorth.addr[(int)(k * list->tnorth.y / visota )*list->tnorth.x + (int)(list->texturecolumn[i] * list->tnorth.x)];
+				int color = list->tsprite.addr[(int)(k * list->tsprite.y / visota )*list->tsprite.x + (int)((0.5 - list->texturecolumn[i]) * list->tsprite.x)];
 				if (color != 0)
 					my_mlx_pixel_put(list, stolbec, j, color);
 			}

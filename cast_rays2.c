@@ -19,7 +19,7 @@ double	cast_ray_x_3(t_list *list, double tempo)
 		&& list->karta[(int)(dot_y)][x - 1] != '1')
 	{
 		if (list->karta[(int)(dot_y)][x - 1] == '2')
-			sprites_3(list, x - 1, (int)dot_y);
+			sprites_1(list, x - 1 + 0.5, (int)dot_y + 0.5, tempo);
 		x--;
 		length_x = x - list->pos_x;
 		length_y = length_x * tan(tempo);
@@ -47,7 +47,7 @@ double	cast_ray_y_3(t_list *list, double tempo)
 		&& list->karta[y - 1][(int)dot_x] != '1')
 	{
 		if (list->karta[y - 1][(int)dot_x] == '2')
-			sprites_3(list, (int)dot_x, y - 1);
+			sprites_1(list, (int)dot_x + 0.5, y - 1 + 0.5, tempo);
 		y--;
 		length_y = y - list->pos_y;
 		length_x = length_y / tan(tempo);
@@ -74,7 +74,7 @@ double	cast_ray_x_4(t_list *list, double tempo)
 		&& (x >= 0 && x < list->max_x) && list->karta[(int)(dot_y)][x] != '1')
 	{
 		if (list->karta[(int)(dot_y)][x] == '2')
-			sprites_4(list, x, (int)dot_y);
+			sprites_1(list, x + 0.5, (int)dot_y + 0.5, tempo);
 		x++;
 		length_x = x - list->pos_x;
 		length_y = length_x * tan(tempo);
@@ -102,7 +102,7 @@ double	cast_ray_y_4(t_list *list, double tempo)
 		&& list->karta[y - 1][(int)dot_x] != '1')
 	{
 		if (list->karta[y - 1][(int)dot_x] == '2')
-			sprites_4(list, (int)dot_x, y - 1);
+			sprites_1(list, (int)dot_x + 0.5, y - 1 + 0.5, tempo);
 		y--;
 		length_y = y - list->pos_y;
 		length_x = length_y / tan(tempo);
