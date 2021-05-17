@@ -59,7 +59,7 @@ double	*map_texturecolumn(t_list *list, double distance
 	return (tempos);
 }
 
-double	*sprites_1(t_list *list, double x, double y, double tempo)
+double	*sprites(t_list *list, double x, double y, double tempo)
 {
 	double	distance;
 	double	b;

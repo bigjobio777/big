@@ -97,8 +97,7 @@ void	stolbec(t_list *list, int stolbec, double dist, double walldistance, int co
 	k = 0;
 	visota = (list->focus / dist) * list->r_x;
 	list->sprites = (list->sprites);
-	sort(list->sprites);
-	sort(list->texturecolumn);
+	sort(list);
 	while (i <= (list->r_y - visota) / 2 && i < list->r_y)
 	{
 		my_mlx_pixel_put(list, stolbec, i, list->ceiling);

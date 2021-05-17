@@ -62,7 +62,7 @@ void	my_mlx_pixel_put(t_list *list, int x, int y, long color)
 	*(unsigned int *)dst = color;
 }
 
-int	sort(double *big)
+int	sort(t_list * list)
 {
 	int		i;
 	int		j;
@@ -70,17 +70,20 @@ int	sort(double *big)
 
 	i = 0;
 	j = 1;
-	if (big[0] == -1)
+	if (list->sprites[0] == -1)
 		return (0);
-	while (big[i] != -1)
+	while (list->sprites[i] != -1)
 	{
-		while (big[j] != -1)
+		while (list->sprites[j] != -1)
 		{
-			if (big[j] < big[i])
+			if (list->sprites[j] < list->sprites[i])
 			{
-				tempo = big[i];
-				big[i] = big[j];
-				big[j] = tempo;
+				tempo = list->sprites[i];
+				list->sprites[i] = list->sprites[j];
+				list->sprites[j] = tempo;
+				tempo = list->texturecolumn[i];
+				list->texturecolumn[i] = list->texturecolumn[j];
+				list->texturecolumn[j] = tempo;
 				i = 0;
 			}
 			j++;

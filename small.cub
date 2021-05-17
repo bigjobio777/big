@@ -1,0 +1,15 @@
+R  300 300
+SO textures/south.xpm
+NO textures/north.xpm
+WE textures/west.xpm
+EA textures/east.xpm
+S  textures/miniman.xpm
+F 253,14,255
+C 100,10,222
+
+111111
+1000001
+1000001
+1022001
+1000N01
+111111
