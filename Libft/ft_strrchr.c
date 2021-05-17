@@ -18,8 +18,8 @@ char	*ft_strrchr(const char *s, int c)
 	char	*tmp;
 
 	if (c == 0)
-		return ((char*)(s + ft_strlen(s)));
-	tmp = (char*)s;
+		return ((char *)(s + ft_strlen(s)));
+	tmp = (char *)s;
 	p = NULL;
 	while (*tmp)
 	{

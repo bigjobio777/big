@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char			*str;
 	size_t			len_s1;
@@ -23,7 +23,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
-	str = (char*)malloc((len_s1 + len_s2 + 1) * sizeof(char));
+	str = (char *)malloc((len_s1 + len_s2 + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	i = 0;
@@ -41,7 +41,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-char		*ft_strcpy(char *dest, char const *src)
+char	*ft_strcpy(char *dest, char const *src)
 {
 	int				i;
 
@@ -55,7 +55,7 @@ char		*ft_strcpy(char *dest, char const *src)
 	return (dest);
 }
 
-size_t		ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t			i;
 
@@ -67,25 +67,25 @@ size_t		ft_strlen(const char *s)
 	return (i);
 }
 
-void		*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*area;
 	unsigned char	chr;
 	size_t			i;
 
-	area = (unsigned char*)s;
+	area = (unsigned char *)s;
 	chr = (unsigned char)c;
 	i = 0;
 	while (i < n)
 	{
 		if (area[i] == chr)
-			return ((void*)(s + i));
+			return ((void *)(s + i));
 		i++;
 	}
 	return (NULL);
 }
 
-char		*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	return (ft_memchr(s, c, ft_strlen(s) + 1));
 }

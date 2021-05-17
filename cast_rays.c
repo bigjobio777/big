@@ -114,8 +114,6 @@ void	cast_rays(t_list *list)
 {
 	double	increment_FOV;
 	double	tempo;
-	double	first;
-	double	second;
 	int		i;
 
 	i = 0;
@@ -132,18 +130,11 @@ void	cast_rays(t_list *list)
 			third_quatre(list, tempo, i);
 		else if ((tempo >= (3 * (M_PI / 2)) && tempo < (2 * M_PI))
 			|| (tempo >= -M_PI_2 && tempo <= 0))
-		{
-			first = cast_ray_x_4(list, tempo);
-			second = cast_ray_y_4(list, tempo);
-			if (first < second)
-				stolbec(list, i, first * cos(tempo - list->pos_angle),
-					list->wall_distancex, east);
-			else
-				stolbec(list, i, second * cos(tempo - list->pos_angle),
-					list->wall_distancey, south);
-		}
+			fouth_quatre(list, tempo, i);
 		i++;
 		tempo -= increment_FOV;
 		list->sprites[0] = -1;
+		list->texturecolumn[0] = -1;
+		list->max_sprite = 0;
 	}
 }

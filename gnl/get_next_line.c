@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int		ft_test(char **remainder, char *p_n)
+int	ft_test(char **remainder, char *p_n)
 {
 	if (*remainder || p_n)
 	{
@@ -55,7 +55,7 @@ char	*check_remainder(char **ostatok, char **line)
 	return (NULL);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char		*ostatok;
 	char			buf[BUFFER_SIZE + 1];

@@ -1,13 +1,16 @@
 #include "Libft/libft.h"
 #include "cub3d.h"
 
-void		init_flags2(t_list *big)
+void	init_flags2(t_list *big)
 {
 	int		i;
 
 	i = 0;
+	big->focus = 1;
 	big->sprites = (double *)malloc(sizeof(double) * (1));
 	big->sprites[0] = -1;
+	big->texturecolumn = (double *)malloc(sizeof(double) * (1));
+	big->texturecolumn[0] = -1;
 	while (i < 127)
 	{
 		big->key_pressed[i] = 0;
@@ -18,10 +21,10 @@ void		init_flags2(t_list *big)
 	big->length = 0;
 	big->tempo = NULL;
 	big->unused = 0;
-
+	big->max_sprite = 0;
 }
 
-void		init_flags(t_list *big)
+void	init_flags(t_list *big)
 {
 	big->r_x = 0;
 	big->r_y = 0;
@@ -47,19 +50,19 @@ void		init_flags(t_list *big)
 	big->FOV = (M_PI / 3);
 	big->max_x = 0;
 	big->max_y = 0;
-	big->focus = 1;
 	init_flags2(big);
 }
 
-void			my_mlx_pixel_put(t_list *list, int x, int y, int color)
+void	my_mlx_pixel_put(t_list *list, int x, int y, long color)
 {
 	char	*dst;
 
-	dst = (char*)list->data.addr + (y * list->data.line_length + x * (list->data.bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	dst = (char *)list->data.addr + (y * list->data.line_length
+			+ x * (list->data.bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
 
-void		sort(double *big)
+int	sort(double *big)
 {
 	int		i;
 	int		j;
@@ -67,9 +70,8 @@ void		sort(double *big)
 
 	i = 0;
 	j = 1;
-	tempo = 0;
 	if (big[0] == -1)
-		return;
+		return (0);
 	while (big[i] != -1)
 	{
 		while (big[j] != -1)
@@ -84,6 +86,7 @@ void		sort(double *big)
 			j++;
 		}
 		i++;
-        j = i + 1;
-    }
+		j = i + 1;
+	}
+	return (0);
 }

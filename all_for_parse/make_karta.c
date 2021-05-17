@@ -1,7 +1,7 @@
 #include "../Libft/libft.h"
 #include "../cub3d.h"
 
-void		clean_tempo(t_list *list)
+void	clean_tempo(t_list *list)
 {
 	list->i = 0;
 	list->j = 0;
@@ -23,12 +23,12 @@ void	last_line_map(char *line)
 	}
 }
 
-char		**make_karta(t_list *list)
+char	**make_karta(t_list *list)
 {
-	int	 i;
-	int	 j;
-	int	 length_y;
-	int	 length_x;
+	int	 	i;
+	int	 	j;
+	int	 	length_y;
+	int	 	length_x;
 	char	**karta;
 
 	i = 0;
@@ -52,17 +52,13 @@ char		**make_karta(t_list *list)
 	return (karta);
 }
 
-void		check_karta4(t_list *list)
+void	check_karta4(t_list *list)
 {
 	int	 i;
-	int	 j;
 	int	 length_x;
 	int	 length_y;
 
-	i = 0;
-	j = 0;
 	length_y = 0;
-	length_x = 0;
 	length_x = (ft_strlen(list->karta[0]) - 1);
 	while (list->karta[length_y])
 		length_y++;
@@ -74,7 +70,8 @@ void		check_karta4(t_list *list)
 		{
 			if (list->karta[length_y][length_x] == '1')
 				length_y = (-1);
-			else if (list->karta[length_y][length_x] != ' ' && list->karta[length_y][length_x])
+			else if (list->karta[length_y][length_x] != ' '
+					&& list->karta[length_y][length_x])
 				print_error(-52);
 			length_y--;
 		}
@@ -83,7 +80,7 @@ void		check_karta4(t_list *list)
 	}
 }
 
-void		check_karta3(t_list *list)
+void	check_karta3(t_list *list)
 {
 	int	 i;
 	int	 j;

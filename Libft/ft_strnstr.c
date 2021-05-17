@@ -18,7 +18,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	unsigned int	i;
 
 	if (!*needle)
-		return ((char*)haystack);
+		return ((char *)haystack);
 	pos = 0;
 	while (haystack[pos] != '\0' && (size_t)pos < len)
 	{
@@ -29,7 +29,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 				&& (size_t)(pos + i) < len)
 				++i;
 			if (needle[i] == '\0')
-				return ((char*)&haystack[pos]);
+				return ((char *)&haystack[pos]);
 		}
 		++pos;
 	}

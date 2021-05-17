@@ -12,22 +12,22 @@
 
 #include "libft.h"
 
-static	int		first_ind(char *s)
+static	int	first_ind(char *s)
 {
 	int		i;
 
 	i = 0;
-	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\v' ||
-			s[i] == '\t' || s[i] == '\r' || s[i] == '\f')
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\v'
+		|| s[i] == '\t' || s[i] == '\r' || s[i] == '\f')
 		i++;
 	return (i);
 }
 
-int				ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int					i;
-	long long	int		rez;
-	long long	int		new_rez;
+	long long int		rez;
+	long long int		new_rez;
 	int					sign;
 
 	sign = 1;
@@ -41,7 +41,12 @@ int				ft_atoi(const char *str)
 	{
 		new_rez = rez * 10 + str[i++] - '0';
 		if (rez > new_rez)
-			return (sign == -1 ? 0 : -1);
+		{
+			if (sign == -1)
+				return (0);
+			else
+				return (-1);
+		}
 		rez = new_rez;
 	}
 	return ((int)rez * sign);

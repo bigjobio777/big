@@ -9,7 +9,7 @@ void	parse_line_help(char *line, t_list *list)
 		print_error(-48);
 }
 
-int	 parse_line(char *line, t_list *list)
+int	parse_line(char *line, t_list *list)
 {
 	if (line[0] == '\0')
 		return (0);
@@ -51,13 +51,14 @@ void	gnl_help(t_list *list, char *line)
 	check_karta4(list);
 	list->karta = make_karta(list);
 	angle_maker(list);
+	floor_ceiling(list);
 }
 
-int	gnl(int  argc, char **argv, t_list *list)
+int	gnl(int argc, char **argv, t_list *list)
 {
-	int	 fd;
+	int		fd;
 	char	*line;
-	int	 test;
+	int		test;
 
 	errors(argc, argv);
 	errors2(argc, argv);
@@ -65,12 +66,14 @@ int	gnl(int  argc, char **argv, t_list *list)
 	if (fd == (-1))
 	{
 		printf("%s", strerror(errno));
-		exit(1);	
+		exit(1);
 	}
-	while ((test = get_next_line(fd, &line)) > 0)
+	test = get_next_line(fd, &line);
+	while (test > 0)
 	{
 		parse_line(line, list);
 		free(line);
+		test = get_next_line(fd, &line);
 	}
 	gnl_help(list, line);
 	return (0);

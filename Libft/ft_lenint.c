@@ -12,12 +12,15 @@
 
 #include "libft.h"
 
-int		ft_lenint(int nbr)
+int	ft_lenint(int nbr)
 {
 	int		len;
 
 	len = 0;
-	len = (nbr <= 0 ? 1 : 0);
+	if (nbr <= 0)
+		len = 1;
+	else
+		len = 0;
 	while (nbr != 0)
 	{
 		nbr = nbr / 10;

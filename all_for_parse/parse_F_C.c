@@ -10,7 +10,7 @@ int	check_digit(char *line, int *i)
 	{
 		if (!ft_isdigit(line[*i]))
 			print_error(-25);
-		else 
+		else
 		{
 			digit = ft_atoi(&line[*i]);
 			while (ft_isdigit(line[*i]))
@@ -21,7 +21,7 @@ int	check_digit(char *line, int *i)
 	{
 		if (!ft_isdigit(line[*i]))
 			print_error(-25);
-		else 
+		else
 		{
 			digit = ft_atoi(&line[*i]);
 			while (ft_isdigit(line[*i]))

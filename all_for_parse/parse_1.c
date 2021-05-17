@@ -1,7 +1,7 @@
 #include "../Libft/libft.h"
 #include "../cub3d.h"
 
-int	 max_line(t_list *list)
+int	max_line(t_list *list)
 {
 	int	 i;
 	int	 max;
@@ -33,7 +33,8 @@ char	**check_map(t_list *list)
 	list->i = 0;
 	while (list->karta[list->i])
 	{
-		list->tempo[list->i] = (char *)malloc(sizeof(char) * (list->length + 1));
+		list->tempo[list->i] = (char *)malloc(sizeof(char)
+				* (list->length + 1));
 		while ((list->j < list->length))
 		{
 			if (list->karta[list->i][list->j])
@@ -41,7 +42,7 @@ char	**check_map(t_list *list)
 				list->tempo[list->i][list->j] = list->karta[list->i][list->j];
 				list->j++;
 			}
-			else 
+			else
 				while ((list->j < list->length))
 					list->tempo[list->i][list->j++] = ' ';
 		}
@@ -62,7 +63,7 @@ void	all_line(char *line)
 	length = ft_strlen(line);
 	if (line[0] != ' ' && line[0] != '1')
 		print_error(-50);
-	if (length > 1 && line[length-1] != ' ' && line[length-1] != '1')
+	if (length > 1 && line[length - 1] != ' ' && line[length - 1] != '1')
 		print_error(-50);
 }
 
@@ -84,8 +85,8 @@ void	first_line(char *line, t_list *list)
 
 void	parse_1(char *line, t_list *list)
 {
-	int	 i;
-	int	 j;
+	int		i;
+	int		j;
 	char	*testline;
 
 	i = 0;
@@ -103,8 +104,8 @@ void	parse_1(char *line, t_list *list)
 			i++;
 		}
 		if (line[i] == '\0')
-		   list->karta = big_massiv(list->karta, testline);
-		else 
+			list->karta = big_massiv(list->karta, testline);
+		else
 			print_error(-45);
 	}
 }

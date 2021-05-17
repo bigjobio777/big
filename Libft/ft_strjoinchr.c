@@ -14,14 +14,15 @@
 
 char	*ft_strjoinchr(char *line, char c)
 {
-	int	 i;
-	int	 length;
+	int		i;
+	int		length;
 	char	*big;
 
 	length = 0;
 	i = 0;
 	length = ft_strlen(line);
-	if (!(big = (char *)malloc(sizeof(char)*(length + 2))))
+	big = (char *)malloc(sizeof(char) * (length + 2));
+	if (big == NULL)
 		return (NULL);
 	while (i < length)
 	{

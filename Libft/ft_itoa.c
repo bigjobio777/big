@@ -12,19 +12,29 @@
 
 #include "libft.h"
 
+void	help(int	*sign, int n)
+{
+	if (n < 0)
+		*(sign) = 1;
+	else
+		*(sign) = 0;
+}
+
 char	*ft_itoa(int n)
 {
-	unsigned	int	nbr;
+	unsigned int	nbr;
 	char			*str;
 	int				sign;
 	int				size;
 
-	sign = (n < 0 ? 1 : 0);
+	help(&sign, n);
 	str = NULL;
 	size = ft_lenint(n);
-	nbr = (n < 0 ? -n : n);
-	if (!(str = (char *)malloc(sizeof(char) * size + 1)))
-		return (NULL);
+	if (n < 0)
+		nbr = -n;
+	else
+		nbr = n;
+	str = (char *)malloc(sizeof(char) * (size + 1));
 	str[size--] = '\0';
 	while (size >= 0)
 	{

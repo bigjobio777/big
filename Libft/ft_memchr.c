@@ -18,13 +18,13 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned char	chr;
 	size_t			i;
 
-	area = (unsigned char*)s;
+	area = (unsigned char *)s;
 	chr = (unsigned char)c;
 	i = 0;
 	while (i < n)
 	{
 		if (area[i] == chr)
-			return ((void*)(s + i));
+			return ((void *)(s + i));
 		i++;
 	}
 	return (NULL);
