@@ -11,7 +11,7 @@ Makelib:
 	make -C Libft
 	make -C mlx
 	cp mlx/libmlx.dylib libmlx.dylib 
-cub3D: $(OBJS) mlx/libmlx.dylib
+cub3D: $(OBJS) Libft/libft.a mlx/libmlx.dylib
 	$(CC) -g -framework OpenGL -Lmlx -lmlx -framework AppKit $(CFLAGS) $(OBJS) -LLibft -lft -o $(NAME)
 
 debug:

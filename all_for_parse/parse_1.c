@@ -28,9 +28,7 @@ char	**check_map(t_list *list)
 	list->length = max_line(list);
 	while (list->karta[list->i])
 		list->i++;
-	list->max_y = list->i;
-	list->tempo = (char **)malloc(sizeof(char *) * (list->i + 2));
-	list->i = 0;
+	help_parse1(list);
 	while (list->karta[list->i])
 	{
 		list->tempo[list->i] = (char *)malloc(sizeof(char)

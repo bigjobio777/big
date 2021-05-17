@@ -85,15 +85,15 @@ void	mlx_starter(t_list *list)
 	list->tnorth.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx,
 				list->tnorth.file, &list->tnorth.x, &list->tnorth.y));
 	list->tnorth.addr = mlx_error(mlx_get_data_addr(list->tnorth.img,
-			&list->tnorth.bits_per_pixel, &list->tnorth.line_length,
-			&list->tnorth.endian));
+				&list->tnorth.bits_per_pixel, &list->tnorth.line_length,
+				&list->tnorth.endian));
 	list->tsouth.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx,
-			list->tsouth.file, &list->tsouth.x,
-			&list->tsouth.y));
+				list->tsouth.file, &list->tsouth.x,
+				&list->tsouth.y));
 	list->tsouth.addr = mlx_error(mlx_get_data_addr(list->tsouth.img,
-			&list->tsouth.bits_per_pixel,
-			&list->tsouth.line_length, &list->tsouth.endian));
-	list->teast.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx, list->teast.file,
-			&list->teast.x, &list->teast.y));
+				&list->tsouth.bits_per_pixel,
+				&list->tsouth.line_length, &list->tsouth.endian));
+	list->teast.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx,
+				list->teast.file, &list->teast.x, &list->teast.y));
 	mlx_starter2(list);
 }

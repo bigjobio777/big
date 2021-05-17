@@ -56,6 +56,7 @@ SRC := \
 		ft_strdup.c \
 		ft_strcmp.c \
 		ft_strjoinchr.c \
+		ft_split_help.c \
 
 OBJS := $(SRC:.c=.o)
 D := $(SRC:.c=.d)

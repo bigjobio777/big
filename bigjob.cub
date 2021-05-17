@@ -1,14 +1,14 @@
-R  800 800
+R  1280 800
 SO textures/north.xpm
 NO textures/south.xpm
 WE textures/west.xpm
 EA textures/east.xpm
-S  textures/333.xpm
-F 255,255,0
-C 0,255,0
+S  textures/777.xpm
+F 255,255,0   
+C 0,255,0 
 
 1111111111
-1000200201
+1000000001
 1000200101
-1000E00001
+1000N00001
 1111111111

@@ -57,10 +57,7 @@ char	**mem_words(char **main_array, char const *s, char c, int index)
 		{
 			main_array[i] = (char *)malloc(sizeof(char) * (lc + 1));
 			if (main_array[i] == NULL)
-			{
-				ft_free_mem(main_array, i);
-				return (0);
-			}
+				return (split_end(main_array, i));
 			i++;
 		}
 		lc = 0;

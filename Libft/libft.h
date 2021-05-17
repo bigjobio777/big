@@ -53,6 +53,8 @@ int		ft_isprint(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_atoi(const char *str);
-int	 ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 char	*ft_strjoinchr(char *line, char c);
+void	ft_free_mem(char **main_array, int main_index);
+char	**split_end(char **main_array, int i);
 #endif

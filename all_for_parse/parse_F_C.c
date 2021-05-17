@@ -8,14 +8,7 @@ int	check_digit(char *line, int *i)
 	digit = 0;
 	if (line[0] == 'F')
 	{
-		if (!ft_isdigit(line[*i]))
-			print_error(-25);
-		else
-		{
-			digit = ft_atoi(&line[*i]);
-			while (ft_isdigit(line[*i]))
-				(*i)++;
-		}
+		help_parse_f(line, i, &digit);
 	}
 	else
 	{
@@ -55,10 +48,7 @@ void	test(char *line, t_list *list)
 	while (line[i] == ' ')
 		i++;
 	list->floor_blue = check_digit(line, &i);
-	while (line[i] == ' ')
-		i++;
-	if (line[i])
-		print_error(-27);
+	help_parse_f2(line, i);
 }
 
 void	test2(char *line, t_list *list)
@@ -85,10 +75,7 @@ void	test2(char *line, t_list *list)
 	while (line[i] == ' ')
 		i++;
 	list->ceiling_blue = check_digit(line, &i);
-	while (line[i] == ' ')
-		i++;
-	if (line[i])
-		print_error(-32);
+	help_parse_f3(line, i);
 }
 
 void	parse_F(char *line, t_list *list)

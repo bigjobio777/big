@@ -170,4 +170,8 @@ void	print_error6(int numerror);
 void	print_error3(int numerror);
 void	print_error2(int numerror);
 void	floor_ceiling(t_list *list);
+void	help_parse1(t_list *list);
+void	help_parse_f(char *line, int *i, int *digit);
+void	help_parse_f2(char *line, int i);
+void	help_parse_f3(char *line, int i);
 #endif
