@@ -82,6 +82,8 @@ void	*mlx_error(void *ptr)
 void	mlx_starter(t_list *list)
 {
 	list->mlx.mlx = mlx_error(mlx_init());
+	mlx_get_screen_size(list->mlx.ptr, &list->max_xx, &list->max_yy);
+	check_size(list);
 	list->tnorth.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx,
 				list->tnorth.file, &list->tnorth.x, &list->tnorth.y));
 	list->tnorth.addr = mlx_error(mlx_get_data_addr(list->tnorth.img,

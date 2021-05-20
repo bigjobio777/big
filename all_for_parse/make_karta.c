@@ -98,6 +98,8 @@ void	check_karta3(t_list *list)
 	{
 		while (j < (length_y - 1))
 		{
+			if (list->karta[j][i] == '1' || list->karta[j][i] == ' ')
+				list->h = 1;
 			if (list->karta[j][i] == '1')
 				j = length_y;
 			else if (list->karta[j][i] != ' ' && list->karta[j][i])

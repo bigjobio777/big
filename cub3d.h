@@ -32,10 +32,10 @@
 # define LEFT 123
 # define RIGHT 124
 # define STEP_PLAYER 0.01
-# define EAST 0x000000
 # define SOUTH 0xFFFFFF
 # define NORTH 0xFF0000
 # define WEST 0x00FF00
+# define EAST 0x000000
 # define STEP 0.01
 typedef struct s_texture
 {
@@ -54,6 +54,7 @@ typedef struct s_mlx
 	void	*mlx;
 	void	*mlx_win;
 	void	*img;
+	void	*ptr;
 }				t_mlx;
 
 typedef struct s_data
@@ -106,6 +107,14 @@ typedef struct s_list
 	int			max_sprite;
 	long		floor;
 	long		ceiling;
+	int			sprite_j;
+	int			sprite_k;
+	int			k;
+	double		dist;
+	int			max_xx;
+	int			max_yy;
+	int			h;
+	char		*lastline;
 }					t_list;
 void	print_error(int numerror);
 void	errors(int argc, char **argv);
@@ -135,7 +144,7 @@ void	cast_rays(t_list *list);
 void	angle_maker(t_list *list);
 int		max_line(t_list *list);
 char	**make_karta(t_list *list);
-void	stolbec(t_list *list, int stolbec, double dist, double walldistance, int color);
+void	stolbec(t_list *list, int stolbec, double walldistance, int color);
 void	my_mlx_pixel_put(t_list *list, int x, int y, long color);
 int		key_hook_stop(int keycode, t_list *list);
 int		key_hook_exit(int	keycode, t_list *list);
@@ -171,4 +180,13 @@ void	help_parse1(t_list *list);
 void	help_parse_f(char *line, int *i, int *digit);
 void	help_parse_f2(char *line, int i);
 void	help_parse_f3(char *line, int i);
+void	draw_sprite2(t_list *list, double *visota, int *i);
+void	draw_sprite(t_list *list, double visota, int stolbec, int i);
+void	draw_ceiling(t_list *list, int stolbec, double dist);
+void	stolbec_help(t_list *list, int stolbec, double dist);
+void	col_north(t_list *list, double visota, double walld, int stolbec);
+void	col_south(t_list *list, double visota, double walld, int stolbec);
+void	col_west(t_list *list, double visota, double walld, int stolbec);
+void	col_east(t_list *list, double visota, double walld, int stolbec);
+void	check_size(t_list *list);
 #endif

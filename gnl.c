@@ -14,8 +14,14 @@ int	parse_line(char *line, t_list *list)
 	if (line[0] == '\0')
 		return (0);
 	list->tempo = ft_split(line, ' ');
+	if (list->lastline && list->bil_1 == 1 && (line[0] == '1' || line[0] == ' ')
+		&& (list->lastline[0] != ' ' && list->lastline [0] != '1') && line[0])
+		print_error(-71);
 	if (line[0] == ' ' || line[0] == '1')
+	{
 		parse_1(line, list);
+		list->lastline = ft_strdup(line);
+	}
 	else if (!(ft_strcmp(list->tempo[0], "R")))
 		parse_r(list, list->tempo);
 	else if (!(ft_strcmp(list->tempo[0], "NO")))
@@ -34,6 +40,7 @@ int	parse_line(char *line, t_list *list)
 		parse_C(line, list);
 	else
 		print_error(-46);
+	list->lastline = ft_strdup(line);
 	return (0);
 }
 

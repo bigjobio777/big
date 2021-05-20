@@ -77,6 +77,8 @@ void	print_error(int numerror)
 		printf("Error\nNot path to texture for SPRITE in 2th argument\n");
 	else if (numerror < (-10) && numerror >= (-70))
 		print_error6(numerror);
+	else if (numerror == (-71))
+		printf("Error\nSecond Map\n");
 	exit(1);
 }
 

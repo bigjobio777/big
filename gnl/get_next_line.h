@@ -26,5 +26,6 @@ int		get_next_line(int const fd, char **line);
 size_t	ft_strlen(const char *s);
 void	*ft_memchr(const void *s, int c, size_t n);
 char	*ft_strchr(const char *s, int c);
+char	*help_gnl3(char *p_n, char *buf, char *tmp, char **ostatok);
 
 #endif

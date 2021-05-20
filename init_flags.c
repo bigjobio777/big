@@ -22,6 +22,14 @@ void	init_flags2(t_list *big)
 	big->tempo = NULL;
 	big->unused = 0;
 	big->max_sprite = 0;
+	big->sprite_j = 0;
+	big->sprite_k = 0;
+	big->k = 0;
+	big->dist = 0;
+	big->max_xx = 0;
+	big->max_yy = 0;
+	big->h = 0;
+	big->lastline = NULL;
 }
 
 void	init_flags(t_list *big)
@@ -62,11 +70,23 @@ void	my_mlx_pixel_put(t_list *list, int x, int y, long color)
 	*(unsigned int *)dst = color;
 }
 
-int	sort(t_list * list)
+void	sort2(t_list *list, int *i, int *j)
+{
+	double	tempo;
+
+	tempo = list->sprites[*(i)];
+	list->sprites[*(i)] = list->sprites[*(j)];
+	list->sprites[*(j)] = tempo;
+	tempo = list->texturecolumn[*(i)];
+	list->texturecolumn[*(i)] = list->texturecolumn[*(j)];
+	list->texturecolumn[*(j)] = tempo;
+	*(i) = 0;
+}
+
+int	sort(t_list *list)
 {
 	int		i;
 	int		j;
-	double	tempo;
 
 	i = 0;
 	j = 1;
@@ -77,15 +97,7 @@ int	sort(t_list * list)
 		while (list->sprites[j] != -1)
 		{
 			if (list->sprites[j] < list->sprites[i])
-			{
-				tempo = list->sprites[i];
-				list->sprites[i] = list->sprites[j];
-				list->sprites[j] = tempo;
-				tempo = list->texturecolumn[i];
-				list->texturecolumn[i] = list->texturecolumn[j];
-				list->texturecolumn[j] = tempo;
-				i = 0;
-			}
+				sort2(list, &i, &j);
 			j++;
 		}
 		i++;

@@ -1,6 +1,14 @@
 #include "Libft/libft.h"
 #include "cub3d.h"
 
+void	check_size(t_list *list)
+{
+	if (list->r_x > list->max_xx)
+		list->r_x = list->max_xx;
+	if (list->r_y > list->max_yy)
+		list->r_y = list->max_yy;
+}
+
 double	*map_sprites(t_list *list, double distance)
 {
 	double		*tempo;

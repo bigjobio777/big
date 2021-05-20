@@ -12,6 +12,19 @@
 
 #include "get_next_line.h"
 
+void	help_gnl2(char *p_n, int *byte_was_read, int fd, char *buf)
+{
+	if (!p_n)
+		*(byte_was_read) = read(fd, buf, BUFFER_SIZE);
+}
+
+void	help_gnl(char *vremennaya, char **ostatok)
+{
+	free(vremennaya);
+	free(*ostatok);
+	*ostatok = NULL;
+}
+
 int	ft_test(char **remainder, char *p_n)
 {
 	if (*remainder || p_n)
@@ -35,7 +48,8 @@ char	*check_remainder(char **ostatok, char **line)
 	p_n = NULL;
 	if (*ostatok)
 	{
-		if ((p_n = ft_strchr(*ostatok, '\n')))
+		p_n = ft_strchr(*ostatok, '\n');
+		if (p_n)
 		{
 			*p_n = '\0';
 			vremennaya = *line;
@@ -48,9 +62,7 @@ char	*check_remainder(char **ostatok, char **line)
 		}
 		vremennaya = *line;
 		*line = ft_strjoin("", *ostatok);
-		free(vremennaya);
-		free(*ostatok);
-		*ostatok = NULL;
+		help_gnl(vremennaya, ostatok);
 	}
 	return (NULL);
 }
@@ -66,20 +78,17 @@ int	get_next_line(int fd, char **line)
 	if (fd < 0 || BUFFER_SIZE <= 0 || !(line) || read(fd, buf, 0) == (-1))
 		return (-1);
 	p_n = check_remainder(&ostatok, line);
-	while (!p_n && (byte_was_read = read(fd, buf, BUFFER_SIZE)))
+	help_gnl2(p_n, &byte_was_read, fd, buf);
+	while (!p_n && byte_was_read)
 	{
 		buf[byte_was_read] = '\0';
-		if ((p_n = ft_strchr(buf, '\n')))
-		{
-			*p_n = '\0';
-			tmp = ostatok;
-			ostatok = ft_strjoin("", ++p_n);
-			free(tmp);
-		}
+		p_n = help_gnl3(p_n, buf, tmp, &ostatok);
 		tmp = *line;
-		if (!(*line = ft_strjoin(*line, buf)))
+		*line = ft_strjoin(*line, buf);
+		if (!*line)
 			return (-1);
 		free(tmp);
+		help_gnl2(p_n, &byte_was_read, fd, buf);
 	}
 	return (ft_test(&ostatok, p_n));
 }
