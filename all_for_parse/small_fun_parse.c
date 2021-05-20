@@ -62,7 +62,7 @@ char	**big_massiv2(char **karta, char *testline)
 	i = 0;
 	while (karta[i])
 	{
-		big[i] = ft_strdup(karta[i]);
+		big[i] = karta[i];
 		i++;
 	}
 	big[i] = ft_strdup(testline);
@@ -85,13 +85,14 @@ char	**big_massiv(char **karta, char *testline)
 	if (karta == NULL)
 	{
 		big = (char **)malloc(sizeof(char *) * (2));
-		big[i] = (char *)malloc(sizeof(char) * (ft_strlen(testline) + 1));
-		big[i] = testline;
+		big[i] = ft_strdup(testline);
 		big[i + 1] = NULL;
 	}
 	else
 	{
 		big = big_massiv2(karta, testline);
+		free(karta);
+		karta = NULL;
 	}
 	return (big);
 }

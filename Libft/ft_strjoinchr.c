@@ -32,5 +32,6 @@ char	*ft_strjoinchr(char *line, char c)
 	big[i++] = c;
 	big[i] = '\0';
 	free(line);
+	line = NULL;
 	return (big);
 }

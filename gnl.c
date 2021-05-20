@@ -14,13 +14,15 @@ int	parse_line(char *line, t_list *list)
 	if (line[0] == '\0')
 		return (0);
 	list->tempo = ft_split(line, ' ');
-	if (list->lastline && list->bil_1 == 1 && (line[0] == '1' || line[0] == ' ')
-		&& (list->lastline[0] != ' ' && list->lastline [0] != '1') && line[0])
-		print_error(-71);
+	// if (list->lastline && list->bil_1 == 1 && (line[0] == '1' || line[0] == ' ')
+	// 	&& (list->lastline[0] != ' ' && list->lastline [0] != '1') && line[0])
+	// 	print_error(-71);
 	if (line[0] == ' ' || line[0] == '1')
 	{
 		parse_1(line, list);
-		list->lastline = ft_strdup(line);
+		// free(list->lastline);
+		// list->lastline = NULL;
+		// list->lastline = ft_strdup(line);
 	}
 	else if (!(ft_strcmp(list->tempo[0], "R")))
 		parse_r(list, list->tempo);
@@ -40,7 +42,17 @@ int	parse_line(char *line, t_list *list)
 		parse_C(line, list);
 	else
 		print_error(-46);
-	list->lastline = ft_strdup(line);
+	// free(list->lastline);
+	// list->lastline = 0;
+	// list->lastline = ft_strdup(line);
+	int d = 0;
+	while (list->tempo[d])
+	{
+		free(list->tempo[d]);
+		d++;
+	}
+	free(list->tempo);
+	list->tempo = 0;
 	return (0);
 }
 
@@ -50,6 +62,8 @@ void	gnl_help(t_list *list, char *line)
 	last_line_map(line);
 	free(line);
 	check_all(list);
+	free(list->tempo);
+	list->tempo = 0;
 	list->karta = check_map(list);
 	clean_tempo(list);
 	check_karta(list);

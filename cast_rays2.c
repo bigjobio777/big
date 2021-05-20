@@ -97,7 +97,7 @@ double	cast_ray_y_4(t_list *list, double tempo)
 	length_y = y - list->pos_y;
 	length_x = length_y / tan(tempo);
 	dot_x = length_x + list->pos_x;
-	while ((y - 1 < list->max_y && y >= 0)
+	while ((y - 1 < list->max_y && y - 1 >= 0)
 		&& (dot_x >= 0 && dot_x < list->max_x)
 		&& list->karta[y - 1][(int)dot_x] != '1')
 	{

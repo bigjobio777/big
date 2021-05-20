@@ -31,8 +31,7 @@ char	**check_map(t_list *list)
 	help_parse1(list);
 	while (list->karta[list->i])
 	{
-		list->tempo[list->i] = (char *)malloc(sizeof(char)
-				* (list->length + 1));
+		list->tempo[list->i] = (char *)malloc(sizeof(char) * (list->length + 1));
 		while ((list->j < list->length))
 		{
 			if (list->karta[list->i][list->j])
@@ -48,7 +47,14 @@ char	**check_map(t_list *list)
 		list->j = 0;
 	}
 	list->tempo[list->i] = NULL;
+	int d = 0;
+	while (list->karta[d])
+	{
+		free(list->karta[d]);
+		d++;
+	}
 	free(list->karta);
+	list->karta = 0;
 	return (list->tempo);
 }
 
@@ -102,8 +108,13 @@ void	parse_1(char *line, t_list *list)
 			i++;
 		}
 		if (line[i] == '\0')
+		{
 			list->karta = big_massiv(list->karta, testline);
+			
+		}
 		else
 			print_error(-45);
 	}
+	free(testline);
+	testline = NULL;
 }

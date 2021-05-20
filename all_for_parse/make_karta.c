@@ -48,6 +48,12 @@ char	**make_karta(t_list *list)
 		j = -1;
 	}
 	karta[i] = NULL;
+	int  d = 0;
+	while (list->karta[d])
+	{
+		free(list->karta[d]);
+		d++;
+	}
 	free(list->karta);
 	return (karta);
 }
