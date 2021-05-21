@@ -1,5 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gnl.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/20 23:22:39 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/21 16:25:15 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Libft/libft.h"
 #include "cub3d.h"
+
+void	clash_royale(t_list *list, char *line)
+{
+	int		d;
+
+	d = 0;
+	while (list->tempo[d])
+	{
+		free(list->tempo[d]);
+		d++;
+	}
+	free(list->tempo);
+	list->tempo = 0;
+	free(list->lastline);
+	list->lastline = NULL;
+	list->lastline = ft_strdup(line);
+}
 
 void	parse_line_help(char *line, t_list *list)
 {
@@ -12,18 +41,10 @@ void	parse_line_help(char *line, t_list *list)
 int	parse_line(char *line, t_list *list)
 {
 	if (line[0] == '\0')
-		return (0);
+		return (clash(list, line));
 	list->tempo = ft_split(line, ' ');
-	// if (list->lastline && list->bil_1 == 1 && (line[0] == '1' || line[0] == ' ')
-	// 	&& (list->lastline[0] != ' ' && list->lastline [0] != '1') && line[0])
-	// 	print_error(-71);
 	if (line[0] == ' ' || line[0] == '1')
-	{
 		parse_1(line, list);
-		// free(list->lastline);
-		// list->lastline = NULL;
-		// list->lastline = ft_strdup(line);
-	}
 	else if (!(ft_strcmp(list->tempo[0], "R")))
 		parse_r(list, list->tempo);
 	else if (!(ft_strcmp(list->tempo[0], "NO")))
@@ -42,17 +63,7 @@ int	parse_line(char *line, t_list *list)
 		parse_C(line, list);
 	else
 		print_error(-46);
-	// free(list->lastline);
-	// list->lastline = 0;
-	// list->lastline = ft_strdup(line);
-	int d = 0;
-	while (list->tempo[d])
-	{
-		free(list->tempo[d]);
-		d++;
-	}
-	free(list->tempo);
-	list->tempo = 0;
+	clash_royale(list, line);
 	return (0);
 }
 

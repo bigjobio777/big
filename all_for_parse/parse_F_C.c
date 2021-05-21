@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_F_C.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/21 17:01:48 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/21 17:01:50 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Libft/libft.h"
 #include "../cub3d.h"
 
@@ -86,14 +98,7 @@ void	parse_F(char *line, t_list *list)
 	checker = ft_split((line + 1), ',');
 	if (checker[0] == NULL || checker[1] == NULL || checker[2] == NULL)
 		print_error(-40);
-	int i = 0;
-	while (checker[i])
-	{
-		free(checker[i]);
-		i++;
-	}
-	free(checker);
-	checker = NULL;
+	mem_uni_killer(checker);
 	if (list->floor_red < 0 || list->floor_red > 255)
 		print_error(-29);
 	if (list->floor_green < 0 || list->floor_green > 255)
@@ -110,14 +115,7 @@ void	parse_C(char *line, t_list *list)
 	checker = ft_split((line + 1), ',');
 	if (checker[0] == NULL || checker[1] == NULL || checker[2] == NULL)
 		print_error(-41);
-	int i = 0;
-	while (checker[i])
-	{
-		free(checker[i]);
-		i++;
-	}
-	free(checker);
-	checker = NULL;
+	mem_uni_killer(checker);
 	if (list->ceiling_red < 0 || list->ceiling_red > 255)
 		print_error(-29);
 	if (list->ceiling_green < 0 || list->ceiling_green > 255)

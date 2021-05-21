@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors2.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/20 23:22:31 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/21 10:45:19 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Libft/libft.h"
 #include "cub3d.h"
 
@@ -53,19 +65,24 @@ void	print_error7(int numerror)
 		printf("Error\nin -EA- no adress(2th argument)\n");
 	else if (numerror == (-35))
 		printf("Error\nin -SO- no adress(2th argument)\n");
+	else if (numerror == (-75))
+		printf("Error\nMap not valid\n");
+	else if (numerror == (-76))
+		printf("Error\nSecond map\n");
 }
 
 void	print_error6(int numerror)
 {
 	if (numerror < (-9) && numerror >= (-20))
 		print_error2(numerror);
-	else if (numerror < (-23) && numerror >= (-34))
+	else if (numerror < (-22) && numerror >= (-34))
 		print_error3(numerror);
 	else if (numerror < (-37) && numerror >= (-49))
 		print_error4(numerror);
-	else if (numerror < (49) && numerror >= (-70))
+	else if (numerror < (-49) && numerror >= (-70))
 		print_error5(numerror);
-	else if (numerror == (-21 || numerror == (-22) || numerror == (-36)
-			|| numerror == (-37) || numerror == (-35)))
+	else if (numerror == (-21) || numerror == (-22) || numerror == (-36)
+		|| numerror == (-37) || numerror == (-35) || numerror == (-75)
+		|| numerror == (-76))
 		print_error7(numerror);
 }

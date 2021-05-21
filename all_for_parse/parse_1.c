@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_1.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/21 17:01:42 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/21 17:01:44 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Libft/libft.h"
 #include "../cub3d.h"
 
@@ -31,7 +43,8 @@ char	**check_map(t_list *list)
 	help_parse1(list);
 	while (list->karta[list->i])
 	{
-		list->tempo[list->i] = (char *)malloc(sizeof(char) * (list->length + 1));
+		list->tempo[list->i] = (char *)malloc(sizeof(char)
+				* (list->length + 1));
 		while ((list->j < list->length))
 		{
 			if (list->karta[list->i][list->j])
@@ -47,14 +60,7 @@ char	**check_map(t_list *list)
 		list->j = 0;
 	}
 	list->tempo[list->i] = NULL;
-	int d = 0;
-	while (list->karta[d])
-	{
-		free(list->karta[d]);
-		d++;
-	}
-	free(list->karta);
-	list->karta = 0;
+	mem_killer(list);
 	return (list->tempo);
 }
 
@@ -95,7 +101,7 @@ void	parse_1(char *line, t_list *list)
 
 	i = 0;
 	j = 0;
-	testline = ft_strjoin("", "");
+	tester_cub(list, &testline, line);
 	if ((line[i] == ' ' || line[i] == '1') && line[i])
 	{
 		first_line(line, list);
@@ -108,10 +114,7 @@ void	parse_1(char *line, t_list *list)
 			i++;
 		}
 		if (line[i] == '\0')
-		{
 			list->karta = big_massiv(list->karta, testline);
-			
-		}
 		else
 			print_error(-45);
 	}

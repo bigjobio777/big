@@ -4,3 +4,5 @@
 *.a
 .DS_Store
 cub3D
+save.bmp
+*.dylib

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   make_karta.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/21 17:01:22 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/21 17:01:30 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Libft/libft.h"
 #include "../cub3d.h"
 
@@ -48,13 +60,7 @@ char	**make_karta(t_list *list)
 		j = -1;
 	}
 	karta[i] = NULL;
-	int  d = 0;
-	while (list->karta[d])
-	{
-		free(list->karta[d]);
-		d++;
-	}
-	free(list->karta);
+	mem_killer(list);
 	return (karta);
 }
 
@@ -95,11 +101,7 @@ void	check_karta3(t_list *list)
 
 	i = 0;
 	j = 0;
-	length_y = 0;
-	length_x = 0;
-	length_x = ft_strlen(list->karta[0]);
-	while (list->karta[length_y])
-		length_y++;
+	karta_helpik(list, &length_x, &length_y);
 	while (i < (length_x -1))
 	{
 		while (j < (length_y - 1))

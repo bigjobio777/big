@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_for_map.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/21 17:01:54 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/21 17:01:55 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Libft/libft.h"
 #include "../cub3d.h"
 
@@ -34,9 +46,9 @@ void	parse_r(t_list *list, char **big)
 			j++;
 		}
 		if (i == 1)
-			list->r_x = ft_atoi(big[i]);
+			make_r_x_y(list, big, 1);
 		else if (i == 2)
-			list->r_y = ft_atoi(big[i]);
+			make_r_x_y(list, big, 2);
 		i++;
 	}
 }

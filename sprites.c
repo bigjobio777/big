@@ -1,5 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sprites.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/20 23:23:28 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/21 16:25:20 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Libft/libft.h"
 #include "cub3d.h"
+
+int	clash(t_list *list, char *line)
+{
+	free(list->lastline);
+	list->lastline = NULL;
+	list->lastline = ft_strdup(line);
+	return (0);
+}
 
 void	check_size(t_list *list)
 {

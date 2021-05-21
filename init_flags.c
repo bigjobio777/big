@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_flags.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/20 23:23:04 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/20 23:23:06 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Libft/libft.h"
 #include "cub3d.h"
 
@@ -12,10 +24,7 @@ void	init_flags2(t_list *big)
 	big->texturecolumn = (double *)malloc(sizeof(double) * (1));
 	big->texturecolumn[0] = -1;
 	while (i < 127)
-	{
-		big->key_pressed[i] = 0;
-		i++;
-	}
+		big->key_pressed[i++] = 0;
 	big->i = 0;
 	big->j = 0;
 	big->length = 0;

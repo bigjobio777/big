@@ -21,7 +21,7 @@ void	ft_free_mem(char **main_array, int main_index)
 		main_index--;
 	}
 	free(main_array);
-} 
+}
 
 int	ft_count_words(char const *s, char c)
 {

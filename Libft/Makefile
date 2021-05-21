@@ -3,19 +3,18 @@
 #														 :::	  ::::::::	#
 #	Makefile										   :+:	  :+:	:+:	#
 #													 +:+ +:+		 +:+	  #
-#	By: bigjobio <bigjobio@student.42.fr>		  +#+  +:+	   +#+		 #
+#	By: tfines <tfines@student.42.fr>			  +#+  +:+	   +#+		 #
 #												 +#+#+#+#+#+   +#+			#
 #	Created: 2020/11/21 18:28:23 by tfines			#+#	#+#			  #
-#	Updated: 2021/03/29 18:29:19 by bigjobio		 ###   ########.fr		#
+#	Updated: 2021/03/29 18:29:19 by tfines		 ###   ########.fr		#
 #																			  #
 # **************************************************************************** #
 
 NAME = libft.a
 OBJS_D := objs/
 HEAD := -I .
-#HEAD := -I includes/
 
-CFLAGS = -MMD -Wall -Wextra -Werror -g  -fsanitize=address
+CFLAGS = -MMD -Wall -Wextra -Werror
 
 SRC := \
 		ft_memset.c \

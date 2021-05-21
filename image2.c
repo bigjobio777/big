@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   image2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/20 23:22:52 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/21 22:23:31 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "cub3d.h"
 
@@ -30,7 +42,7 @@ void	draw_sprite(t_list *list, double visota, int stolbec, int i)
 			/ visota) *list->tsprite.line_length
 		+ (int)((0.5 - list->texturecolumn[i])
 			* list->tsprite.x) *(list->tnorth.bits_per_pixel / 8);
-	if (*(unsigned int *)col != 0)
+	if (*(unsigned int *)col != 4278190080 && *(unsigned int *)col != 0)
 		my_mlx_pixel_put(list, stolbec, list->sprite_j,
 			*(unsigned int *)col);
 }

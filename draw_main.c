@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_main.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/20 23:22:16 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/21 14:40:40 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Libft/libft.h"
 #include "cub3d.h"
 #include "mlx/mlx.h"
@@ -79,11 +91,12 @@ void	*mlx_error(void *ptr)
 	return (ptr);
 }
 
-void	mlx_starter(t_list *list)
+void	mlx_starter(t_list *list, int argc)
 {
 	list->mlx.mlx = mlx_error(mlx_init());
 	mlx_get_screen_size(list->mlx.mlx, &list->max_xx, &list->max_yy);
-	check_size(list);
+	if (argc != 3)
+		check_size(list);
 	list->tnorth.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx,
 				list->tnorth.file, &list->tnorth.x, &list->tnorth.y));
 	list->tnorth.addr = mlx_error(mlx_get_data_addr(list->tnorth.img,

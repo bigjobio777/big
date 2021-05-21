@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/20 23:23:12 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/21 14:40:02 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Libft/libft.h"
 #include "cub3d.h"
 #include "mlx/mlx.h"
@@ -78,7 +90,7 @@ int	main(int argc, char **argv)
 
 	init_flags(&list);
 	gnl(argc, argv, &list);
-	mlx_starter(&list);
+	mlx_starter(&list, argc);
 	if (argc == 3)
 	{
 		save_bmp(&list);

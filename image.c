@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   image.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/20 23:22:46 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/21 22:18:06 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "cub3d.h"
 
@@ -56,9 +68,9 @@ void	stolbec_help(t_list *list, int stolbec, double dist)
 		if (list->sprites[i] < dist)
 		{
 			draw_sprite2(list, &visota, &i);
-			while (list->sprite_j < (list->r_y + visota) / 2
+			while (list->sprite_j < (list->r_y + visota) / 2 - 1
 				&& list->sprite_j < list->r_y)
-			{	
+			{
 				if (list->sprite_j >= 0 && (list->texturecolumn[i] < 0.5
 						&& list->texturecolumn[i] > -0.5))
 					draw_sprite(list, visota, stolbec, i);

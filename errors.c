@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/20 23:22:24 by bigjobio          #+#    #+#             */
+/*   Updated: 2021/05/21 10:34:15 by bigjobio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Libft/libft.h"
 #include "cub3d.h"
 
@@ -75,7 +87,7 @@ void	print_error(int numerror)
 		printf("Error\nNot path to texture for EAST in 2th argument\n");
 	else if (numerror == (-9))
 		printf("Error\nNot path to texture for SPRITE in 2th argument\n");
-	else if (numerror < (-10) && numerror >= (-70))
+	else if (numerror <= (-10) && numerror >= (-76))
 		print_error6(numerror);
 	else if (numerror == (-71))
 		printf("Error\nSecond Map\n");

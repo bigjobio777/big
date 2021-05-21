@@ -1,16 +1,19 @@
-111111
-102001
-102001
-12N021
-120021
-111111
-
-
-R  700 700 
+R  700 700000000000000000000000000000000000000
 SO textures/north.xpm
 NO textures/south.xpm
 WE textures/west.xpm
 EA textures/east.xpm
-S  textures/knight.xpm
-F 255, 255,1   
-C 0,255,0 
+S  textures/miniman.xpm
+F 255,255,1   
+C 0,255,0
+
+111111
+102001
+102001
+12N021
+100111
+1101011
+120011
+111111
+
+
