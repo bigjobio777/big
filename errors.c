@@ -6,7 +6,7 @@
 /*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:22:24 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 10:34:15 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:41:19 by bigjobio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,9 @@ void	print_error(int numerror)
 
 void	errors(int argc, char **argv)
 {
-	int	 i;
 	int	 length;
 
 	length = 0;
-	i = 0;
 	if (argc > 3 || argc < 2)
 		print_error(-1);
 	length = ft_strlen(argv[1]);
@@ -118,11 +116,9 @@ void	errors(int argc, char **argv)
 
 void	errors2(int argc, char **argv)
 {
-	int	 i;
 	int	 length;
 
 	length = ft_strlen(argv[1]);
-	i = 0;
 	if (argc == 3)
 	{
 		if (length > 4)

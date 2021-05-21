@@ -6,7 +6,7 @@
 /*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 17:01:59 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 17:02:01 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:42:34 by bigjobio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,9 @@ char	**big_massiv2(char **karta, char *testline)
 char	**big_massiv(char **karta, char *testline)
 {
 	int	 	i;
-	int	 	j;
-	int	 	itog;
 	char	**big;
 
 	i = 0;
-	j = 0;
-	itog = 0;
 	big = NULL;
 	if (karta == NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 17:01:42 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 17:01:44 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:42:06 by bigjobio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,8 @@ char	**check_map(t_list *list)
 
 void	all_line(char *line)
 {
-	int	 i;
 	int	 length;
 
-	i = 0;
 	length = ft_strlen(line);
 	if (line[0] != ' ' && line[0] != '1')
 		print_error(-50);
@@ -96,11 +94,9 @@ void	first_line(char *line, t_list *list)
 void	parse_1(char *line, t_list *list)
 {
 	int		i;
-	int		j;
 	char	*testline;
 
 	i = 0;
-	j = 0;
 	tester_cub(list, &testline, line);
 	if ((line[i] == ' ' || line[i] == '1') && line[i])
 	{

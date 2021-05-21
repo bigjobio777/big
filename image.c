@@ -6,7 +6,7 @@
 /*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:22:46 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 22:18:06 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:55:35 by bigjobio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	key_hook(int keycode, t_list *list)
 	else if (keycode == RIGHT)
 		list->key_pressed[RIGHT] = 1;
 	else if (keycode == ESC)
-		exit(1);
+		key_hook_exit(keycode, list);
 	else if (keycode == W)
 		list->key_pressed[W] = 1;
 	else if (keycode == S)
@@ -34,7 +34,14 @@ int	key_hook(int keycode, t_list *list)
 
 int	key_hook_exit(int keycode, t_list *list)
 {
-	list->unused = keycode;
+	(void)keycode;
+	mlx_destroy_image(list->mlx.mlx, list->data.img);
+	mlx_destroy_image(list->mlx.mlx, list->teast.img);
+	mlx_destroy_image(list->mlx.mlx, list->twest.img);
+	mlx_destroy_image(list->mlx.mlx, list->tnorth.img);
+	mlx_destroy_image(list->mlx.mlx, list->tsouth.img);
+	mlx_destroy_image(list->mlx.mlx, list->tsprite.img);
+	mlx_destroy_window(list->mlx.mlx, list->mlx.mlx_win);
 	exit(0);
 }
 

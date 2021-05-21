@@ -6,7 +6,7 @@
 /*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:22:39 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 16:25:15 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:45:48 by bigjobio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ int	gnl(int argc, char **argv, t_list *list)
 		test = get_next_line(fd, &line);
 	}
 	gnl_help(list, line);
+	close(fd);
 	return (0);
 }
