@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_karta_helps.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 16:30:36 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 16:58:51 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/21 23:30:21 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,17 @@ void	make_r_x_y(t_list *list, char **src, int i)
 	if (i == 1)
 	{
 		list->r_x = ft_atoi(src[i]);
-		if (list->r_x <= 0 || list->r_x > 100000)
+		if (list->r_x == 0)
+			print_error(-4);
+		if (list->r_x < 0 || list->r_x > 100000)
 			list->r_x = 99999;
 	}
 	else if (i == 2)
 	{
 		list->r_y = ft_atoi(src[i]);
-		if (list->r_y <= 0 || list->r_y > 100000)
+		if (list->r_y == 0)
+			print_error(-4);
+		if (list->r_y < 0 || list->r_y > 100000)
 			list->r_y = 99999;
 	}
 }

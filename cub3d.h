@@ -196,4 +196,6 @@ void	mem_uni_killer(char **src);
 void	make_r_x_y(t_list *list, char **src, int i);
 void	checker_mapik(t_list *list, char *line);
 void	tester_cub(t_list *list, char **testline, char *line);
+void	mem_free_list(t_list *list);
+void	mem_clean_mlx(t_list *list);
 #endif

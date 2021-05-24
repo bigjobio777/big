@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:22:39 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 22:45:48 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/24 20:00:54 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,7 @@ int	gnl(int argc, char **argv, t_list *list)
 	char	*line;
 	int		test;
 
-	errors(argc, argv);
-	errors2(argc, argv);
+	(void)argc;
 	fd = open(argv[1], O_RDONLY);
 	if (fd == (-1))
 	{

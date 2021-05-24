@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:22:46 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 22:55:35 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/25 00:04:41 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,12 @@ int	key_hook(int keycode, t_list *list)
 int	key_hook_exit(int keycode, t_list *list)
 {
 	(void)keycode;
-	mlx_destroy_image(list->mlx.mlx, list->data.img);
-	mlx_destroy_image(list->mlx.mlx, list->teast.img);
-	mlx_destroy_image(list->mlx.mlx, list->twest.img);
-	mlx_destroy_image(list->mlx.mlx, list->tnorth.img);
-	mlx_destroy_image(list->mlx.mlx, list->tsouth.img);
-	mlx_destroy_image(list->mlx.mlx, list->tsprite.img);
-	mlx_destroy_window(list->mlx.mlx, list->mlx.mlx_win);
+	mem_free_list(list);
+	mem_clean_mlx(list);
+	if (list->mlx.img)
+		mlx_destroy_image(list->mlx.mlx, list->data.img);
+	if (list->mlx.mlx_win)
+		mlx_destroy_window(list->mlx.mlx, list->mlx.mlx_win);
 	exit(0);
 }
 

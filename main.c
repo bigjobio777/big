@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:23:12 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 22:47:05 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/24 23:03:28 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	save_bmp(t_list *list)
 	}
 	close(fd);
 	mlx_destroy_image(list->mlx.mlx, list->data.img);
+	mem_free_list(list);
+	exit(0);
 	return (0);
 }
 
@@ -88,14 +90,13 @@ int	main(int argc, char **argv)
 {
 	t_list		list;
 
+	errors(argc, argv);
+	errors2(argc, argv);
 	init_flags(&list);
 	gnl(argc, argv, &list);
 	mlx_starter(&list, argc);
 	if (argc == 3)
-	{
 		save_bmp(&list);
-		exit(0);
-	}
 	list.mlx.mlx_win = mlx_new_window(list.mlx.mlx,
 			list.r_x, list.r_y, "Cub3D");
 	mlx_hook(list.mlx.mlx_win, 02, (1L << 0), key_hook, &list);

@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+         #
+#    By: tfines <tfines>                            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 23:23:22 by bigjobio          #+#    #+#              #
-#    Updated: 2021/05/21 22:40:34 by bigjobio         ###   ########.fr        #
+#    Updated: 2021/05/24 23:04:02 by tfines           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3D
-SRC := main.c errors.c init_flags.c gnl.c all_for_parse/parse_for_map.c all_for_parse/parse_F_C.c all_for_parse/parse_1.c gnl/get_next_line.c gnl/get_next_line2.c gnl/get_next_line_utils.c all_for_parse/small_fun_parse.c image.c cast_rays.c angle_maker.c all_for_parse/make_karta.c sprites.c all_for_parse/make_karta2.c cast_rays2.c cast_rays3.c draw_main.c errors2.c all_for_parse/ceiling_floor.c image2.c image3.c all_for_parse/make_karta_helps.c
+SRC := main.c errors.c init_flags.c gnl.c all_for_parse/parse_for_map.c all_for_parse/parse_F_C.c all_for_parse/parse_1.c gnl/get_next_line.c gnl/get_next_line2.c gnl/get_next_line_utils.c all_for_parse/small_fun_parse.c image.c cast_rays.c angle_maker.c all_for_parse/make_karta.c sprites.c all_for_parse/make_karta2.c cast_rays2.c cast_rays3.c draw_main.c errors2.c all_for_parse/ceiling_floor.c image2.c image3.c all_for_parse/make_karta_helps.c mem_clean.c
 OBJS := $(SRC:.c=.o)
 CC := clang
 D := $(SRC:.c=.d)

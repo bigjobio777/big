@@ -6,7 +6,7 @@
 /*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:22:24 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 22:41:19 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/21 23:20:32 by bigjobio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	print_error(int numerror)
 	else if (numerror == (-3))
 		printf("Error\n3th argument not '--save'\n");
 	else if (numerror == (-4))
-		printf("Error\nAfter R not digit\n");
+		printf("Error\nNot valid integer in R\n");
 	else if (numerror == (-5))
 		printf("Error\nNot path to texture for NORTH in 2th argument\n");
 	else if (numerror == (-6))

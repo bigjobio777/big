@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:22:57 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/20 23:22:59 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/24 17:15:16 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	col_north(t_list *list, double visota, double walld, int stolbec)
 		*list->tnorth.line_length
 		+ (int)(walld * (list->tnorth.x))
 		*(list->tnorth.bits_per_pixel / 8);
+	if (*(unsigned int *)col == 4278190080)
+		*(unsigned int *)col = 0;
 	my_mlx_pixel_put(list, stolbec, list->i, *(unsigned int *)col);
 	list->i++;
 	list->k++;
@@ -34,6 +36,8 @@ void	col_south(t_list *list, double visota, double walld, int stolbec)
 		*list->tsouth.line_length
 		+ (int)(walld * list->tsouth.x)
 		*(list->tsouth.bits_per_pixel / 8);
+	if (*(unsigned int *)col == 4278190080)
+		*(unsigned int *)col = 0;
 	my_mlx_pixel_put(list, stolbec, list->i, *(unsigned int *)col);
 	list->i++;
 	list->k++;
@@ -48,6 +52,8 @@ void	col_west(t_list *list, double visota, double walld, int stolbec)
 		*list->twest.line_length
 		+ (int)(walld * list->twest.x)
 		*(list->twest.bits_per_pixel / 8);
+	if (*(unsigned int *)col == 4278190080)
+		*(unsigned int *)col = 0;
 	my_mlx_pixel_put(list, stolbec, list->i, *(unsigned int *)col);
 	list->i++;
 	list->k++;
@@ -61,6 +67,8 @@ void	col_east(t_list *list, double visota, double walld, int stolbec)
 		+ (int)(list->k / visota * list->teast.y)
 		*list->teast.line_length + (int)(walld * list->teast.x)
 		*(list->teast.bits_per_pixel / 8);
+	if (*(unsigned int *)col == 4278190080)
+		*(unsigned int *)col = 0;
 	my_mlx_pixel_put(list, stolbec, list->i, *(unsigned int *)col);
 	list->i++;
 	list->k++;

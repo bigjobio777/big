@@ -1,15 +1,15 @@
-R  700 700000000000000000000000000000000000000
-SO textures/north.xpm
-NO textures/south.xpm
+R  700 700
+SO textures/south.xpm
+NO textures/north.xpm
 WE textures/west.xpm
 EA textures/east.xpm
-S  textures/miniman.xpm
+S  textures/barrel.xpm
 F 255,255,1   
 C 0,255,0
 
 111111
-102001
-102001
+100001
+100001
 12N021
 100111
 1101011
