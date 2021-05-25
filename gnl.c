@@ -6,7 +6,7 @@
 /*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:22:39 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/24 20:00:54 by tfines           ###   ########.fr       */
+/*   Updated: 2021/05/25 22:57:14 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	clash_royale(t_list *list, char *line)
 void	parse_line_help(char *line, t_list *list)
 {
 	if (list->bil_1 == 1 && line[0] != ' ' && line[0] != '1' && line[0])
-		print_error(-43);
+		print_error(list, -43);
 	else if (list->bil_1 == 1 && line[0] == '\0')
-		print_error(-48);
+		print_error(list, -48);
 }
 
 int	parse_line(char *line, t_list *list)
@@ -62,7 +62,7 @@ int	parse_line(char *line, t_list *list)
 	else if (!(ft_strcmp(list->tempo[0], "C")))
 		parse_C(line, list);
 	else
-		print_error(-46);
+		print_error(list, -46);
 	clash_royale(list, line);
 	return (0);
 }
@@ -70,7 +70,7 @@ int	parse_line(char *line, t_list *list)
 void	gnl_help(t_list *list, char *line)
 {
 	parse_line(line, list);
-	last_line_map(line);
+	last_line_map(list, line);
 	free(line);
 	check_all(list);
 	free(list->tempo);
@@ -94,9 +94,11 @@ int	gnl(int argc, char **argv, t_list *list)
 
 	(void)argc;
 	fd = open(argv[1], O_RDONLY);
+	list->second_fd = fd;
 	if (fd == (-1))
 	{
-		printf("%s", strerror(errno));
+		mem_free_list(list);
+		printf("%s\n", strerror(errno));
 		exit(1);
 	}
 	test = get_next_line(fd, &line);

@@ -6,7 +6,7 @@
 /*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:22:46 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/25 00:04:41 by tfines           ###   ########.fr       */
+/*   Updated: 2021/05/25 23:50:00 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	key_hook_exit(int keycode, t_list *list)
 	(void)keycode;
 	mem_free_list(list);
 	mem_clean_mlx(list);
-	if (list->mlx.img)
+	if (list->data.img)
 		mlx_destroy_image(list->mlx.mlx, list->data.img);
 	if (list->mlx.mlx_win)
 		mlx_destroy_window(list->mlx.mlx, list->mlx.mlx_win);

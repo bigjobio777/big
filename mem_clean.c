@@ -6,7 +6,7 @@
 /*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 23:03:16 by tfines            #+#    #+#             */
-/*   Updated: 2021/05/24 23:38:57 by tfines           ###   ########.fr       */
+/*   Updated: 2021/05/26 00:12:07 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,18 @@ void	mem_clean_mlx(t_list *list)
 		mlx_destroy_image(list->mlx.mlx, list->teast.img);
 	if (list->twest.img)
 		mlx_destroy_image(list->mlx.mlx, list->twest.img);
+}
+
+void	init_3(t_list *big)
+{
+	big->h = 0;
+	big->lastline = NULL;
+	big->second_fd = -1;
+	big->data.img = NULL;
+	big->tnorth.img = NULL;
+	big->tsouth.img = NULL;
+	big->teast.img = NULL;
+	big->twest.img = NULL;
+	big->tsprite.img = NULL;
+	big->mlx.mlx_win = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:22:31 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 10:45:19 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/25 23:11:15 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	print_error7(int numerror)
 		printf("Error\nMap not valid\n");
 	else if (numerror == (-76))
 		printf("Error\nSecond map\n");
+	else if (numerror == (-71))
+		printf("Error\nSecond Map\n");
 }
 
 void	print_error6(int numerror)
@@ -83,6 +85,6 @@ void	print_error6(int numerror)
 		print_error5(numerror);
 	else if (numerror == (-21) || numerror == (-22) || numerror == (-36)
 		|| numerror == (-37) || numerror == (-35) || numerror == (-75)
-		|| numerror == (-76))
+		|| numerror == (-76) || numerror == (-71))
 		print_error7(numerror);
 }

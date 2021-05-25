@@ -6,7 +6,7 @@
 /*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:23:12 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/24 23:03:28 by tfines           ###   ########.fr       */
+/*   Updated: 2021/05/25 23:02:18 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@
 
 void	mlx_starter2(t_list *list)
 {
-	list->teast.addr = mlx_error(mlx_get_data_addr(list->teast.img,
+	list->teast.addr = mlx_error(list, mlx_get_data_addr(list->teast.img,
 				&list->teast.bits_per_pixel, &list->teast.line_length,
 				&list->teast.endian));
-	list->twest.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx,
+	list->twest.img = mlx_error(list, mlx_xpm_file_to_image(list->mlx.mlx,
 				list->twest.file, &list->twest.x, &list->twest.y));
-	list->twest.addr = mlx_error(mlx_get_data_addr(list->twest.img,
+	list->twest.addr = mlx_error(list, mlx_get_data_addr(list->twest.img,
 				&list->twest.bits_per_pixel, &list->twest.line_length,
 				&list->twest.endian));
-	list->tsprite.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx,
+	list->tsprite.img = mlx_error(list, mlx_xpm_file_to_image(list->mlx.mlx,
 				list->tsprite.file, &list->tsprite.x, &list->tsprite.y));
-	list->tsprite.addr = mlx_error(mlx_get_data_addr(list->tsprite.img,
+	list->tsprite.addr = mlx_error(list, mlx_get_data_addr(list->tsprite.img,
 				&list->tsprite.bits_per_pixel, &list->tsprite.line_length,
 				&list->tsprite.endian));
-	list->data.img = mlx_error(mlx_new_image(list->mlx.mlx, list->r_x,
+	list->data.img = mlx_error(list, mlx_new_image(list->mlx.mlx, list->r_x,
 				list->r_y));
-	list->data.addr = mlx_error(mlx_get_data_addr(list->data.img,
+	list->data.addr = mlx_error(list, mlx_get_data_addr(list->data.img,
 				&list->data.bits_per_pixel, &list->data.line_length,
 				&list->data.endian));
 }
@@ -90,8 +90,8 @@ int	main(int argc, char **argv)
 {
 	t_list		list;
 
-	errors(argc, argv);
-	errors2(argc, argv);
+	errors(&list, argc, argv);
+	errors2(&list, argc, argv);
 	init_flags(&list);
 	gnl(argc, argv, &list);
 	mlx_starter(&list, argc);

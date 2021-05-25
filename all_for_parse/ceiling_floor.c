@@ -3,36 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ceiling_floor.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 17:03:51 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 17:03:54 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/25 22:56:40 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
 #include "../cub3d.h"
 
-void	help_parse_f3(char *line, int i)
+void	help_parse_f3(t_list *list, char *line, int i)
 {
 	while (line[i] == ' ')
 		i++;
 	if (line[i])
-		print_error(-32);
+		print_error(list, -32);
 }
 
-void	help_parse_f2(char *line, int i)
+void	help_parse_f2(t_list *list, char *line, int i)
 {
 	while (line[i] == ' ')
 		i++;
 	if (line[i])
-		print_error(-27);
+		print_error(list, -27);
 }
 
-void	help_parse_f(char *line, int *i, int *digit)
+void	help_parse_f(t_list *list, char *line, int *i, int *digit)
 {
 	if (!ft_isdigit(line[*i]))
-		print_error(-25);
+		print_error(list, -25);
 	else
 	{
 		(*digit) = ft_atoi(&line[*i]);

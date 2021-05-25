@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:22:24 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 23:20:32 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/26 00:27:56 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	print_error2(int numerror)
 		printf("Error\nin -NO- arguments more than 2\n");
 }
 
-void	print_error(int numerror)
+void	print_error(t_list *list, int numerror)
 {
 	if (numerror == (-1))
 		printf("Error\nNumbers of arguments wrong\n");
@@ -89,32 +89,34 @@ void	print_error(int numerror)
 		printf("Error\nNot path to texture for SPRITE in 2th argument\n");
 	else if (numerror <= (-10) && numerror >= (-76))
 		print_error6(numerror);
-	else if (numerror == (-71))
-		printf("Error\nSecond Map\n");
+	if (list->second_fd != -1)
+		close(list->second_fd);
+	if (numerror != (-1) && numerror != (-2) && numerror != (-3))
+		mem_free_list(list);
 	exit(1);
 }
 
-void	errors(int argc, char **argv)
+void	errors(t_list *list, int argc, char **argv)
 {
 	int	 length;
 
 	length = 0;
 	if (argc > 3 || argc < 2)
-		print_error(-1);
+		print_error(list, -1);
 	length = ft_strlen(argv[1]);
 	if (argc == 2)
 	{
 		if (length > 4)
 		{
 			if (ft_strcmp(&argv[1][length - 4], ".cub"))
-				print_error(-2);
+				print_error(list, -2);
 		}
 		else
-			print_error(-1);
+			print_error(list, -1);
 	}
 }
 
-void	errors2(int argc, char **argv)
+void	errors2(t_list *list, int argc, char **argv)
 {
 	int	 length;
 
@@ -124,11 +126,11 @@ void	errors2(int argc, char **argv)
 		if (length > 4)
 		{
 			if (ft_strcmp(&argv[1][length - 4], ".cub"))
-				print_error(-2);
+				print_error(list, -2);
 		}
 		else
-			print_error(-2);
+			print_error(list, -2);
 		if (ft_strcmp(argv[2], "--save"))
-			print_error(-3);
+			print_error(list, -3);
 	}
 }

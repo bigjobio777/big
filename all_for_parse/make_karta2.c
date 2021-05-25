@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_karta2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 17:01:35 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 17:01:37 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/25 22:48:50 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	check_karta_help(t_list *list, int i, int j)
 {
 	if ((list->karta[j][i] == ' ' && (list->karta[j - 1][i]
 		!= ' ' && list->karta[j - 1][i] != '1')))
-		print_error(-52);
+		print_error(list, -52);
 	if ((list->karta[j][i] == ' ' && (list->karta[j + 1][i]
 		!= ' ' && list->karta[j + 1][i] != '1')))
-		print_error(-52);
+		print_error(list, -52);
 	if ((list->karta[j][i] == ' ' && (list->karta[j][i + 1]
 		!= ' ' && list->karta[j][i + 1] != '1')))
-		print_error(-52);
+		print_error(list, -52);
 	if ((list->karta[j][i] == ' ' && (list->karta[j][i - 1]
 		!= ' ' && list->karta[j][i - 1] != '1')))
-		print_error(-52);
+		print_error(list, -52);
 }
 
 void	check_karta(t_list *list)
@@ -61,7 +61,7 @@ void	tester_cub(t_list *list, char **testline, char *line)
 		|| list->twest.file == NULL || list->teast.file == NULL
 		|| list->tsprite.file == NULL || list->floor_red == -1
 		|| list->ceiling_red == -1)
-		print_error(-75);
+		print_error(list, -75);
 	*testline = ft_strjoin("", "");
 	checker_mapik(list, line);
 }

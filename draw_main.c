@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:22:16 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 22:50:31 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/25 23:01:45 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,33 +82,33 @@ int	drawimage(t_list *list)
 	return (0);
 }
 
-void	*mlx_error(void *ptr)
+void	*mlx_error(t_list *list, void *ptr)
 {
 	if (ptr == NULL)
 	{
-		print_error(-70);
+		print_error(list, -70);
 	}
 	return (ptr);
 }
 
 void	mlx_starter(t_list *list, int argc)
 {
-	list->mlx.mlx = mlx_error(mlx_init());
+	list->mlx.mlx = mlx_error(list, mlx_init());
 	mlx_get_screen_size(list->mlx.mlx, &list->max_xx, &list->max_yy);
 	if (argc != 3)
 		check_size(list);
-	list->tnorth.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx,
+	list->tnorth.img = mlx_error(list, mlx_xpm_file_to_image(list->mlx.mlx,
 				list->tnorth.file, &list->tnorth.x, &list->tnorth.y));
-	list->tnorth.addr = mlx_error(mlx_get_data_addr(list->tnorth.img,
+	list->tnorth.addr = mlx_error(list, mlx_get_data_addr(list->tnorth.img,
 				&list->tnorth.bits_per_pixel, &list->tnorth.line_length,
 				&list->tnorth.endian));
-	list->tsouth.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx,
+	list->tsouth.img = mlx_error(list, mlx_xpm_file_to_image(list->mlx.mlx,
 				list->tsouth.file, &list->tsouth.x,
 				&list->tsouth.y));
-	list->tsouth.addr = mlx_error(mlx_get_data_addr(list->tsouth.img,
+	list->tsouth.addr = mlx_error(list, mlx_get_data_addr(list->tsouth.img,
 				&list->tsouth.bits_per_pixel,
 				&list->tsouth.line_length, &list->tsouth.endian));
-	list->teast.img = mlx_error(mlx_xpm_file_to_image(list->mlx.mlx,
+	list->teast.img = mlx_error(list, mlx_xpm_file_to_image(list->mlx.mlx,
 				list->teast.file, &list->teast.x, &list->teast.y));
 	mlx_starter2(list);
 }

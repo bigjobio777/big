@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_fun_parse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 17:01:59 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 22:42:34 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/25 22:52:52 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	check_karta2(t_list *list)
 			if (list->karta[j][i] == '1')
 				i = length_x;
 			else if (list->karta[j][i] != ' ' && list->karta[j][i])
-				print_error(-52);
+				print_error(list, -52);
 			i++;
 		}
 		i = 0;
@@ -49,7 +49,7 @@ void	check_player(char c, t_list *list)
 		if (list->playes_location == 0)
 			list->playes_location = c;
 		else
-			print_error(-44);
+			print_error(list, -44);
 	}
 }
 

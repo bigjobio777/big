@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 17:01:42 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 22:42:06 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/25 22:49:50 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,15 @@ char	**check_map(t_list *list)
 	return (list->tempo);
 }
 
-void	all_line(char *line)
+void	all_line(t_list *list, char *line)
 {
 	int	 length;
 
 	length = ft_strlen(line);
 	if (line[0] != ' ' && line[0] != '1')
-		print_error(-50);
+		print_error(list, -50);
 	if (length > 1 && line[length - 1] != ' ' && line[length - 1] != '1')
-		print_error(-50);
+		print_error(list, -50);
 }
 
 void	first_line(char *line, t_list *list)
@@ -85,7 +85,7 @@ void	first_line(char *line, t_list *list)
 		while (line[i])
 		{
 			if (line[i] != ' ' && line[i] != '1')
-				print_error(-49);
+				print_error(list, -49);
 			i++;
 		}
 	}
@@ -101,7 +101,7 @@ void	parse_1(char *line, t_list *list)
 	if ((line[i] == ' ' || line[i] == '1') && line[i])
 	{
 		first_line(line, list);
-		all_line(line);
+		all_line(list, line);
 		list->bil_1 = 1;
 		while ((availeble_simvol(line[i])) && line[i])
 		{
@@ -112,7 +112,7 @@ void	parse_1(char *line, t_list *list)
 		if (line[i] == '\0')
 			list->karta = big_massiv(list->karta, testline);
 		else
-			print_error(-45);
+			print_error(list, -45);
 	}
 	free(testline);
 	testline = NULL;

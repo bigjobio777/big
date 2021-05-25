@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_flags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 23:23:04 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/20 23:23:06 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/26 00:13:01 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ void	init_flags2(t_list *big)
 	big->dist = 0;
 	big->max_xx = 0;
 	big->max_yy = 0;
-	big->h = 0;
-	big->lastline = NULL;
+	init_3(big);
 }
 
 void	init_flags(t_list *big)

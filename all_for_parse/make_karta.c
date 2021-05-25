@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_karta.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bigjobio <bigjobio@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfines <tfines>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 17:01:22 by bigjobio          #+#    #+#             */
-/*   Updated: 2021/05/21 17:01:30 by bigjobio         ###   ########.fr       */
+/*   Updated: 2021/05/25 22:54:20 by tfines           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	clean_tempo(t_list *list)
 	free(list->tempo);
 }
 
-void	last_line_map(char *line)
+void	last_line_map(t_list *list, char *line)
 {
 	int	 i;
 
@@ -30,7 +30,7 @@ void	last_line_map(char *line)
 	while (line[i])
 	{
 		if (line[i] != ' ' && line[i] != '1')
-			print_error(-51);
+			print_error(list, -51);
 		i++;
 	}
 }
@@ -84,7 +84,7 @@ void	check_karta4(t_list *list)
 				length_y = (-1);
 			else if (list->karta[length_y][length_x] != ' '
 					&& list->karta[length_y][length_x])
-				print_error(-52);
+				print_error(list, -52);
 			length_y--;
 		}
 		length_y = i;
@@ -111,7 +111,7 @@ void	check_karta3(t_list *list)
 			if (list->karta[j][i] == '1')
 				j = length_y;
 			else if (list->karta[j][i] != ' ' && list->karta[j][i])
-				print_error(-52);
+				print_error(list, -52);
 			j++;
 		}
 		j = 0;
